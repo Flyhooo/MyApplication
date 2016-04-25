@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+
+            android:id="@+id/listitem_questionDetail_comment_Img"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:clickable="true"
+            android:scaleType="centerCrop"
+            app:border_color="@color/app_black"
+            app:border_width="1px" />
+
+        <TextView
+            android:id="@+id/listitem_questionDetail_comment_name_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/listitem_questionDetail_comment_Img"
+            android:layout_toRightOf="@+id/listitem_questionDetail_comment_Img"
+            android:text="皮特"
+            android:textColor="@color/app_text_black"
+            android:textSize="@dimen/app_textsize_normal" />
+
+        <TextView
+            android:id="@+id/listitem_questionDetail_comment_time_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/listitem_questionDetail_comment_Img"
+            android:layout_toRightOf="@+id/listitem_questionDetail_comment_Img"
+            android:text="20分钟前"
+            android:textColor="@color/app_text_gray"
+            android:textSize="@dimen/app_textsize_small" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/listitem_questionDetail_comment_content_TV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="@color/app_text_black"
+        android:textSize="@dimen/app_textsize_normal" />
+
+</LinearLayout>

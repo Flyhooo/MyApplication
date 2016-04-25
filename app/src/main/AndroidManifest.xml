@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.artwall.project">
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name=".application.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.SplashActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name" />
+        <!-- 登录 -->
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden" />
+        <!-- 注册 -->
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:label="@string/app_name"></activity>
+        <!-- 注册下一步选择用户角色 -->
+        <activity
+            android:name=".activity.SelectCharacterActivity"
+            android:label="@string/app_name"></activity>
+        <!-- 公用网页 -->
+        <activity android:name=".activity.WebViewActivity" />
+        <!-- 书画详情页 -->
+        <activity
+            android:name=".activity.PaintDetailActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!-- 消息通知列表页 -->
+        <activity android:name=".activity.MessageActivity" />
+        <!-- 聊天消息列表页 -->
+        <activity android:name=".activity.MessageChatActivity" />
+        <!-- 聊天页 -->
+        <activity
+            android:name=".activity.ChatActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!-- 邀评详情页 -->
+        <activity
+            android:name=".activity.YaoPingDetailActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!-- 摄影详情页 -->
+        <activity android:name=".activity.PhotographyDetailActivity" />
+        <!-- 问答详情页 -->
+        <activity android:name=".activity.QuestionDetailActivity" />
+        <!-- 编辑个人信息页 -->
+        <activity
+            android:name=".activity.UserInfoActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!-- 个人中心 -->
+        <activity
+            android:name=".activity.UserCenterActivity"
+            android:label="@string/app_name"></activity>
+        <!-- 我的账户 -->
+        <activity
+            android:name=".activity.AccountActivity"
+            android:label="@string/app_name"></activity>
+        <!-- 设置 -->
+        <activity
+            android:name=".activity.SettingActivity"
+            android:label="@string/app_name"></activity>
+        <!-- 账号与安全-->
+        <activity
+            android:name=".activity.AccountSafeActivity"
+            android:label="@string/app_name"></activity>
+        <!-- 意见反馈 -->
+        <activity
+            android:name=".activity.SuggestActivity"
+            android:label="@string/app_name"></activity>
+        <!-- 帮助与支持 -->
+        <activity
+            android:name=".activity.HelpActivity"
+            android:label="@string/app_name"></activity>
+        <!-- 发布儿童创作 -->
+        <activity
+            android:name=".activity.send.SendChildrenActivity"
+            android:label="@string/app_name"></activity>
+        <!-- 上传摄影作品 -->
+        <activity
+            android:name=".activity.send.SendPhotographyActivity"
+            android:label="@string/app_name"></activity>
+        <!-- 发布问答 -->
+        <activity
+            android:name=".activity.send.SendQuestionActivity"
+            android:label="@string/app_name"></activity>
+        <!-- 上传教学 -->
+        <activity
+            android:name=".activity.send.SendTeachActivity"
+            android:label="@string/app_name"></activity>
+        <!-- 发布邀评 -->
+        <activity
+            android:name=".activity.send.SendYaopingActivity"
+            android:label="@string/app_name"></activity>
+
+        <!-- 忘记密码第一步 -->
+        <activity
+            android:name=".activity.FrogetPwdStep1Activity"
+            android:label="@string/app_name"></activity>
+        <!-- 忘记密码第二步 -->
+        <activity
+            android:name=".activity.FrogetPwdStep2Activity"
+            android:label="@string/app_name"></activity>
+
+    </application>
+
+</manifest>

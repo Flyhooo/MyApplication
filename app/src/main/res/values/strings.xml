@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">艺术.生活</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string-array name="paint_title">
+        <item>国画</item>
+        <item>油画</item>
+        <item>素描</item>
+        <item>速写</item>
+        <item>水粉</item>
+        <item>彩铅</item>
+        <item>综合</item>
+        <item>书法</item>
+    </string-array>
+
+    <string-array name="usercenter_title">
+        <item>教学</item>
+        <item>邀评</item>
+        <item>问答</item>
+        <item>儿童创作</item>
+        <item>在创作品</item>
+        <item>卖品</item>
+        <item>摄影</item>
+        <item>订单</item>
+    </string-array>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">手机号/邮箱</string>
+    <string name="prompt_password">登录密码</string>
+    <string name="action_sign_in">登录</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">邮箱或手机号格式不正确</string>
+    <string name="error_invalid_password">密码长度不低于六位</string>
+    <string name="error_incorrect_password">密码不能为空</string>
+    <string name="error_field_required">不能为空</string>
+    <!-- Strings related to login -->
+
+
+
+
+
+</resources>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp" >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+
+            android:id="@+id/listitem_yaopingdetail_Img"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:clickable="true"
+            android:scaleType="centerCrop"
+            app:border_width="1px"
+            app:border_color="@color/app_black"/>
+
+        <TextView
+            android:id="@+id/listitem_yaopingdetail_name_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/listitem_yaopingdetail_Img"
+            android:layout_toRightOf="@+id/listitem_yaopingdetail_Img"
+            android:text="皮特"
+            android:textColor="@color/app_text_black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/listitem_yaopingdetail_time_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/listitem_yaopingdetail_Img"
+            android:layout_toRightOf="@+id/listitem_yaopingdetail_Img"
+            android:text="20分钟前"
+            android:textColor="@color/app_text_gray"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/listitem_yaopingdetail_content_TV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/app_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="打赏"
+            android:textColor="@color/app_text_black"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/app_line_gray" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="举报"
+            android:textColor="@color/app_text_black"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</LinearLayout>

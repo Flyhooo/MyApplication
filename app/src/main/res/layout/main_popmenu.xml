@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_cloud"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:background="#ffff">
+
+    <TextView
+        android:id="@+id/main_send_question_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="60dp"
+        android:clickable="true"
+        android:drawablePadding="8dp"
+        android:drawableRight="@mipmap/write"
+        android:gravity="center_vertical"
+        android:onClick="click"
+        android:padding="8dp"
+        android:text="发布问答"
+        android:textColor="@color/app_green"
+        android:textSize="@dimen/app_textsize_normal" />
+
+    <TextView
+        android:id="@+id/main_send_paintandwrite_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="90dp"
+        android:layout_marginRight="60dp"
+        android:clickable="true"
+        android:drawablePadding="8dp"
+        android:drawableRight="@mipmap/write"
+        android:gravity="center_vertical"
+        android:onClick="click"
+        android:padding="8dp"
+        android:text="上传教学"
+        android:textColor="@color/app_green"
+        android:textSize="@dimen/app_textsize_normal" />
+
+    <TextView
+        android:id="@+id/main_send_yaoping_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="120dp"
+        android:layout_marginRight="60dp"
+        android:clickable="true"
+        android:drawablePadding="8dp"
+        android:drawableRight="@mipmap/write"
+        android:gravity="center_vertical"
+        android:onClick="click"
+        android:padding="8dp"
+        android:text="发布邀评"
+        android:textColor="@color/app_green"
+        android:textSize="@dimen/app_textsize_normal" />
+
+    <TextView
+        android:id="@+id/main_send_photography_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="150dp"
+        android:layout_marginRight="60dp"
+        android:clickable="true"
+        android:drawablePadding="8dp"
+        android:drawableRight="@mipmap/write"
+        android:gravity="center_vertical"
+        android:onClick="click"
+        android:padding="8dp"
+        android:text="上传摄影作品"
+        android:textColor="@color/app_green"
+        android:textSize="@dimen/app_textsize_normal" />
+
+    <TextView
+        android:id="@+id/main_send_children_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="180dp"
+        android:layout_marginRight="60dp"
+        android:clickable="true"
+        android:drawablePadding="8dp"
+        android:drawableRight="@mipmap/write"
+        android:gravity="center_vertical"
+        android:onClick="click"
+        android:padding="8dp"
+        android:text="发布儿童创作"
+        android:textColor="@color/app_green"
+        android:textSize="@dimen/app_textsize_normal" />
+
+
+</RelativeLayout>

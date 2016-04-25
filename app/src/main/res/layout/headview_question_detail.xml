@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="在美国成为终身教授到底有多困难？终身教授大概是个什么水平？"
+        android:textColor="@color/app_text_black"
+        android:textSize="@dimen/app_textsize_normal"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/listitem_Question_tag1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tag_background"
+            android:padding="3dp"
+            android:text="绘画"
+            android:textColor="@color/app_text_white"
+            android:textSize="@dimen/app_textsize_small" />
+
+        <TextView
+            android:id="@+id/listitem_Question_tag2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/tag_background"
+            android:padding="3dp"
+            android:text="中国画"
+            android:textColor="@color/app_text_white"
+            android:textSize="@dimen/app_textsize_small" />
+
+        <TextView
+            android:id="@+id/listitem_Question_tag3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tag_background"
+            android:padding="3dp"
+            android:text="儿童"
+            android:textColor="@color/app_text_white"
+            android:textSize="@dimen/app_textsize_small" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:lineSpacingExtra="5dp"
+        android:text="12.28修改。本来是给在美国的学生看的，很多地方习惯性地夹杂了一些英语，能改的尽量改过来，有的像MIT之类的我想不需要翻译吧？不一定，看什么学校。前面有人说过了，MIT这样的地方整个运行…"
+        android:textColor="@color/app_text_gray"
+        android:textSize="@dimen/app_textsize_normal" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="阿斯蒂芬"
+            android:textColor="@color/app_text_black"
+            android:textSize="@dimen/app_textsize_small" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="回答(15)"
+        android:textColor="@color/app_text_gray"
+        android:textSize="@dimen/app_textsize_normal" />
+
+</LinearLayout>

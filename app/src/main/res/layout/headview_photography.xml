@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/headview_photography_userImg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:id="@+id/headview_photography_userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/headview_photography_userImg"
+            android:text="友利"
+            android:textColor="@color/app_text_black"
+            android:textSize="@dimen/app_textsize_normal" />
+
+        <TextView
+            android:id="@+id/headview_photography_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="2016-10-11 09:30"
+            android:textColor="@color/app_text_gray"
+            android:textSize="@dimen/app_textsize_small" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/headview_photography_tag1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tag_background"
+            android:padding="3dp"
+            android:text="人像摄影"
+            android:textColor="@color/app_text_white"
+            android:textSize="@dimen/app_textsize_small" />
+
+        <TextView
+            android:id="@+id/headview_photography_tag2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/tag_background"
+            android:padding="3dp"
+            android:text="写真"
+            android:textColor="@color/app_text_white"
+            android:textSize="@dimen/app_textsize_small" />
+
+        <TextView
+            android:id="@+id/headview_photography_tag3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tag_background"
+            android:padding="3dp"
+            android:text="外景"
+            android:textColor="@color/app_text_white"
+            android:textSize="@dimen/app_textsize_small" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/headview_photography_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:textColor="@color/app_text_black"
+        android:textSize="@dimen/app_textsize_normal"
+        android:text="这是我在西藏采风时候拍下来的一组照片，四月份的西藏真的是美呆了。期待下次换个季节去的时候能够有另一番景象！"
+        android:lineSpacingExtra="5dp"/>
+</LinearLayout>

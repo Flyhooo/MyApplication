@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_white"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/Chat_toolbar"
+        layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/app_gray"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
+
+            <ImageView
+                android:id="@+id/Chat_input_emoji_IV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:clickable="true"
+                android:onClick="click"
+                android:src="@mipmap/chat_emoji_icon" />
+
+            <ImageView
+                android:id="@+id/Chat_input_addImg_IV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_toRightOf="@+id/Chat_input_emoji_IV"
+                android:clickable="true"
+                android:onClick="click"
+                android:src="@mipmap/chat_add_icon" />
+
+            <TextView
+                android:id="@+id/Chat_input_send_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:background="@color/app_white"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="click"
+                android:padding="7dp"
+                android:text="发送"
+                android:textColor="@color/app_text_black"
+                android:textSize="@dimen/app_textsize_normal" />
+
+            <EditText
+                android:id="@+id/Chat_input_edit_ET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toLeftOf="@+id/Chat_input_send_TV"
+                android:layout_toRightOf="@+id/Chat_input_addImg_IV" />
+
+        </RelativeLayout>
+
+        <GridView
+            android:id="@+id/Chat_input_emoji_GV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:verticalSpacing="8dp"
+            android:numColumns="7"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
+            android:visibility="gone"></GridView>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Chat_toolbar"></android.support.v7.widget.RecyclerView>
+
+
+</RelativeLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:checked="true"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="绘画" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="大咖" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="儿童" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="话题" />
+        <item
+            android:id="@+id/nav_market"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="集市" />
+    </group>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_userCenter"
+                android:icon="@drawable/ic_menu_share"
+                android:title="个人中心" />
+            <item
+                android:id="@+id/nav_account"
+                android:icon="@drawable/ic_menu_share"
+                android:title="我的账户" />
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/ic_menu_send"
+                android:title="设置" />
+        </menu>
+    </item>
+
+</menu>

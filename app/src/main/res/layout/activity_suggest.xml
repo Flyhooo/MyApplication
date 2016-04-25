@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_white"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/toolbar"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="16dp"
+        android:padding="5dp"
+        android:gravity="start|left"
+        android:textColor="@color/app_text_gray"
+        android:textSize="@dimen/app_textsize_normal"
+        android:hint="您的一句反馈可能就是我们的全部..."
+        android:background="@color/app_gray"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:textSize="@dimen/app_textsize_bigest"
+        android:textColor="@color/app_text_white"
+        android:text="感谢您的反馈和意见"
+        android:background="@color/app_green"
+        android:layout_margin="16dp"/>
+</LinearLayout>

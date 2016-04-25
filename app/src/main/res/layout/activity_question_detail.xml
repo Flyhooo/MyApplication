@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/app_white"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/questionDetail_toolbar"
+        layout="@layout/toolbar" />
+
+    <ListView
+        android:id="@+id/questionDetail_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/app_line_gray"
+        android:dividerHeight="1px"
+        android:layout_below="@+id/questionDetail_toolbar"></ListView>
+</RelativeLayout>

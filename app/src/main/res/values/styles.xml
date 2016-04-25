@@ -1,0 +1,21 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/app_green</item>
+    </style>
+
+    <style name="text">
+        <item name="android:textSize">@dimen/app_textsize_bigest</item>
+        <item name="android:textColor">@color/app_green</item>
+    </style>
+
+    <style name="toolBarText">
+        <item name="android:textSize">@dimen/app_textsize_big</item>
+        <item name="android:textColor">@color/app_text_black</item>
+    </style>
+
+</resources>

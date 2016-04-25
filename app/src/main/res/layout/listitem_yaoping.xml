@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/listitem_yaoping_userImg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:scaleType="centerCrop"
+            app:border_color="@color/app_black"
+            app:border_width="2dp" />
+
+        <TextView
+            android:id="@+id/listitem_yaoping_name_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/listitem_yaoping_userImg"
+            android:layout_toRightOf="@id/listitem_yaoping_userImg"
+            android:text="吴道子老师"
+            android:textColor="@color/app_text_black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/listitem_yaoping_time_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/listitem_yaoping_userImg"
+            android:layout_toRightOf="@id/listitem_yaoping_userImg"
+            android:text="12-15 10:35发布 "
+            android:textColor="@color/app_text_gray"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/listitem_yaoping_content_TV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/app_text_black"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:id="@+id/listitem_yaoping_imgLL1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/listitem_yaoping_img11"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/listitem_yaoping_img12"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/listitem_yaoping_imgLL2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/listitem_yaoping_img21"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/listitem_yaoping_img22"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/app_line_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:orientation="horizontal">
+
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/listitem_yaoping_zanCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="点赞(12)"
+                android:textSize="10sp" />
+        </FrameLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="15dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/app_line_gray" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/listitem_yaoping_pinglun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="评论(12)"
+                android:textSize="10sp" />
+        </FrameLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="15dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/app_line_gray" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/listitem_yaoping_shareCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="分享(12)"
+                android:textSize="10sp" />
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

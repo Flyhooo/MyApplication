@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/listitem_message_userImg_IV"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp" />
+
+    <TextView
+        android:id="@+id/listitem_message_name_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/listitem_message_userImg_IV"
+        android:layout_toRightOf="@id/listitem_message_userImg_IV"
+        android:text="你好啊"
+        android:textColor="@color/app_text_black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/listitem_message_content_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/listitem_message_userImg_IV"
+        android:layout_toRightOf="@id/listitem_message_userImg_IV"
+        android:text="我是消息内容"
+        android:textColor="@color/app_text_gray"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/listitem_message_time_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="昨天"
+        android:textSize="12sp" />
+
+</RelativeLayout>

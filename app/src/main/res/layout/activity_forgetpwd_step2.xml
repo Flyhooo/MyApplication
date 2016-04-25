@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/app_line_gray" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@null"
+        android:hint="请输入新密码"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:singleLine="true"
+        android:textColor="@color/app_text_black"
+        android:textCursorDrawable="@null"
+        android:textSize="@dimen/app_textsize_normal" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/app_line_gray" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@null"
+        android:hint="确认密码"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:singleLine="true"
+        android:textColor="@color/app_text_black"
+        android:textCursorDrawable="@null"
+        android:textSize="@dimen/app_textsize_normal" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="10dp"
+        android:background="@color/app_line_gray" />
+
+    <TextView
+        android:id="@+id/ForgetPwdStep1_next_TV"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/login_login_bg"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:onClick="click"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="完成"
+        android:textColor="@color/app_green"
+        android:textSize="@dimen/app_textsize_bigest" />
+
+</LinearLayout>

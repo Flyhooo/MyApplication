@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/app_white"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/yaopingDetail_toolbar"
+        layout="@layout/toolbar"></include>
+
+    <LinearLayout
+        android:id="@+id/yaopingdetail_bottom_input_LL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/app_gray"
+        android:orientation="horizontal"
+        android:paddingBottom="7dp"
+        android:paddingTop="7dp">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/yaopingDetail_input_addImg_IV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_camera"
+                android:clickable="true"
+                android:onClick="click" />
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/yaopingDetail_input_content_ET"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="5"
+            android:gravity="left|center_vertical"
+            android:hint="输入@即可邀请大咖..."
+            android:maxLines="10"
+            android:paddingBottom="7dp"
+            android:background="@drawable/edittext_bg_green_line"
+            android:paddingLeft="3dp"
+            android:paddingTop="7dp"
+            android:textColor="@color/app_text_black"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/yaopingDetail_input_send_TV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="click"
+            android:src="@mipmap/icon_send"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/yaopingdetail_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/yaopingdetail_bottom_input_LL"
+        android:layout_below="@id/yaopingDetail_toolbar"></ListView>
+
+</RelativeLayout>
