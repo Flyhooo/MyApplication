@@ -31,7 +31,6 @@ public class Config {
      */
     public static String APP_CERSION_CODE = "1";
 
-    public static String HTTP_HOST = "http://139.196.11.127/Api/Api.php?";
 
 
 }
