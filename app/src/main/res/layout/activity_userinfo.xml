@@ -17,10 +17,13 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/Userinfo_userimg_RL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:orientation="horizontal">
+                android:clickable="true"
+                android:onClick="click"
+                android:orientation="horizontal"
+                android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -34,6 +37,7 @@
                     android:textSize="@dimen/app_textsize_big" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/userInfo_image"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_alignParentRight="true"
@@ -41,17 +45,20 @@
                     android:src="@mipmap/ic_launcher" />
 
             </RelativeLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="7dp"
-                android:background="@color/app_gray"
-                />
+                android:background="@color/app_gray" />
 
             <RelativeLayout
+                android:id="@+id/Userinfo_nickname_RL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:gravity="center_vertical">
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:onClick="click"
+                android:padding="16dp">
 
 
                 <TextView
@@ -70,8 +77,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="Flyhooo"
                     android:layout_marginRight="20dp"
+                    android:text="Flyhooo"
                     android:textColor="@color/app_text_black"
                     android:textSize="@dimen/app_textsize_normal" />
 
@@ -80,20 +87,24 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/right_arrow"/>
+                    android:src="@mipmap/right_arrow" />
 
             </RelativeLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/app_line_gray"
                 android:layout_marginLeft="16dp"
-                />
+                android:background="@color/app_line_gray" />
+
             <RelativeLayout
+                android:id="@+id/Userinfo_sex_RL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:gravity="center_vertical">
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:onClick="click"
+                android:padding="16dp">
 
 
                 <TextView
@@ -112,8 +123,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="保密"
                     android:layout_marginRight="20dp"
+                    android:text="保密"
                     android:textColor="@color/app_text_black"
                     android:textSize="@dimen/app_textsize_normal" />
 
@@ -122,20 +133,24 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/right_arrow"/>
+                    android:src="@mipmap/right_arrow" />
 
             </RelativeLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/app_line_gray"
                 android:layout_marginLeft="16dp"
-                />
+                android:background="@color/app_line_gray" />
+
             <RelativeLayout
+                android:id="@+id/Userinfo_introduct_RL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:orientation="horizontal">
+                android:clickable="true"
+                android:onClick="click"
+                android:orientation="horizontal"
+                android:padding="16dp">
 
 
                 <TextView
@@ -145,7 +160,7 @@
                     android:drawableLeft="@mipmap/userinfo_introduc_icon"
                     android:drawablePadding="10dp"
                     android:gravity="center_vertical"
-                    android:text="个性签名"
+                    android:text="个人简介"
                     android:textColor="@color/app_text_black"
                     android:textSize="@dimen/app_textsize_big" />
 
@@ -154,8 +169,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="我就是我，不一样的烟火！"
                     android:layout_marginRight="16dp"
+                    android:text="我就是我，不一样的烟火！"
                     android:textColor="@color/app_text_black"
                     android:textSize="@dimen/app_textsize_normal" />
 
@@ -164,21 +179,25 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/right_arrow"/>
+                    android:src="@mipmap/right_arrow" />
 
             </RelativeLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/app_line_gray"
                 android:layout_marginLeft="16dp"
-                />
+                android:background="@color/app_line_gray" />
+
             <RelativeLayout
+                android:id="@+id/Userinfo_character_RL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
+                android:clickable="true"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:onClick="click"
+                android:orientation="horizontal"
+                android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -196,8 +215,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="画家"
                     android:layout_marginRight="20dp"
+                    android:text="画家"
                     android:textColor="@color/app_text_black"
                     android:textSize="@dimen/app_textsize_normal" />
 
@@ -206,18 +225,22 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/right_arrow"/>
+                    android:src="@mipmap/right_arrow" />
 
             </RelativeLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/app_line_gray"
                 android:layout_marginLeft="16dp"
-                />
+                android:background="@color/app_line_gray" />
+
             <RelativeLayout
+                android:id="@+id/Userinfo_phone_RL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:onClick="click"
                 android:padding="16dp">
 
 
@@ -237,8 +260,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="18562656666"
                     android:layout_marginRight="20dp"
+                    android:text="18562656666"
                     android:textColor="@color/app_text_black"
                     android:textSize="@dimen/app_textsize_normal" />
 
@@ -247,21 +270,25 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/right_arrow"/>
+                    android:src="@mipmap/right_arrow" />
 
             </RelativeLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/app_line_gray"
                 android:layout_marginLeft="16dp"
-                />
+                android:background="@color/app_line_gray" />
+
             <RelativeLayout
+                android:id="@+id/Userinfo_email_RL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
+                android:clickable="true"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:onClick="click"
+                android:orientation="horizontal"
+                android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -279,16 +306,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="8054656656@qq.com"
                     android:layout_marginRight="20dp"
+                    android:text="8054656656@qq.com"
                     android:textColor="@color/app_text_black"
                     android:textSize="@dimen/app_textsize_normal" />
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/right_arrow"/>
+                    android:src="@mipmap/right_arrow" />
 
             </RelativeLayout>
         </LinearLayout>

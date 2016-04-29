@@ -8,26 +8,27 @@ public class Paint {
 //    id：ID
 //    userid：用户ID
 //    nickname：昵称
-//    userimage：头像
+//    portrait：头像
 //    title：标题
-//    tag：标签
+//    label：标签
 //    examine：浏览次数
-//    zan：点赞次数
+//    zambia：点赞次数
 //    comment：评论次数
-//    fang：模仿次数
-//    img：缩略图
+//    copys：模仿次数
+//    thumb：缩略图
 
     private String id;
     private String userid;
     private String nickname;
-    private String userimage;
+    private String portrait;
     private String title;
-    private String tag;
+    private String label;
     private String examine;
-    private String zan;
+    private String zambia;
     private String comment;
-    private String fang;
-    private String img;
+    private String copys;
+    private String thumb;
+
 
     public String getId() {
         return id;
@@ -53,12 +54,12 @@ public class Paint {
         this.nickname = nickname;
     }
 
-    public String getUserimage() {
-        return userimage;
+    public String getPortrait() {
+        return portrait;
     }
 
-    public void setUserimage(String userimage) {
-        this.userimage = userimage;
+    public void setPortrait(String portrait) {
+        this.portrait = portrait;
     }
 
     public String getTitle() {
@@ -69,12 +70,12 @@ public class Paint {
         this.title = title;
     }
 
-    public String getTag() {
-        return tag;
+    public String getLabel() {
+        return label;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setLabel(String label) {
+        this.label = label;
     }
 
     public String getExamine() {
@@ -85,12 +86,12 @@ public class Paint {
         this.examine = examine;
     }
 
-    public String getZan() {
-        return zan;
+    public String getZambia() {
+        return zambia;
     }
 
-    public void setZan(String zan) {
-        this.zan = zan;
+    public void setZambia(String zambia) {
+        this.zambia = zambia;
     }
 
     public String getComment() {
@@ -101,19 +102,19 @@ public class Paint {
         this.comment = comment;
     }
 
-    public String getFang() {
-        return fang;
+    public String getCopys() {
+        return copys;
     }
 
-    public void setFang(String fang) {
-        this.fang = fang;
+    public void setCopys(String copys) {
+        this.copys = copys;
     }
 
-    public String getImg() {
-        return img;
+    public String getThumb() {
+        return thumb;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setThumb(String thumb) {
+        this.thumb = thumb;
     }
 }

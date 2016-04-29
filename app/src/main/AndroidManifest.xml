@@ -70,13 +70,12 @@
             android:name=".activity.YaoPingDetailActivity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <!-- 摄影详情页 -->
-        <activity android:name=".activity.PhotographyDetailActivity" />
         <!-- 问答详情页 -->
         <activity android:name=".activity.QuestionDetailActivity" />
-        <!-- 编辑个人信息页 -->
-        <activity
-            android:name=".activity.UserInfoActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!-- 个人信息页 -->
+        <activity android:name=".activity.UserInfoActivity" />
+        <!-- 编辑个人信息-->
+        <activity android:name=".activity.UpdateUserinfoActivity" />
         <!-- 个人中心 -->
         <activity
             android:name=".activity.UserCenterActivity"
@@ -111,7 +110,7 @@
             android:label="@string/app_name"></activity>
         <!-- 发布问答 -->
         <activity
-            android:name=".activity.send.SendQuestionActivity"
+            android:name=".activity.send.SendTopicActivity"
             android:label="@string/app_name"></activity>
         <!-- 上传教学 -->
         <activity
@@ -130,6 +129,10 @@
         <activity
             android:name=".activity.FrogetPwdStep2Activity"
             android:label="@string/app_name"></activity>
+
+        <activity
+            android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity"
+            android:configChanges="orientation|screenSize" />
 
     </application>
 

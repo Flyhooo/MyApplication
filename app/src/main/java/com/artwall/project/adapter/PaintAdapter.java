@@ -20,10 +20,8 @@ import java.util.List;
 public class PaintAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int TYPE_ITEM_LEFT = -1;
     private static final int TYPE_ITEM_RIGHT = 1;
-    private static final int TYPE_FOOTER = 0;
 
     private List<Paint> mData;
-    private boolean mShowFooter = true;
     private Context mContext;
 
     private OnItemClickListener mOnItemClickListener;
@@ -41,9 +39,7 @@ public class PaintAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public int getItemViewType(int position) {
         // 最后一个item设置为footerView
-        if (position + 1 == getItemCount()) {
-            return TYPE_FOOTER;
-        } else if (position % 2 == 0) {
+        if (position % 2 == 0) {
             return TYPE_ITEM_LEFT;
         } else {
             return TYPE_ITEM_RIGHT;
@@ -51,95 +47,83 @@ public class PaintAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                      int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_ITEM_LEFT) {
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.listitem_teach1, parent, false);
             ItemViewHolder vh = new ItemViewHolder(v);
             return vh;
-        } else if (viewType == TYPE_ITEM_RIGHT) {
+        } else {
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.listitem_teach2, parent, false);
             ItemViewHolder2 vh2 = new ItemViewHolder2(v);
             return vh2;
-        } else {
-            View view = LayoutInflater.from(parent.getContext()).inflate(
-                    R.layout.footer, null);
-            view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
-            return new FooterViewHolder(view);
         }
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof ItemViewHolder) {
+        Paint paint = mData.get(position);
+        if (paint == null) {
+            return;
+        }
+        StringBuilder sb = new StringBuilder();
 
-            Paint paint = mData.get(position);
-            if (paint == null) {
-                return;
+        if (null != paint.getLabel()) {
+            String[] atrr = paint.getLabel().split(",");
+            for (int i = 0; i < atrr.length; i++) {
+                sb.append("#" + atrr[i] + " ");
             }
+        }
+        if (holder instanceof ItemViewHolder) {
             ((ItemViewHolder) holder).pinglunTV.setText(paint.getComment());
             ((ItemViewHolder) holder).collectTV.setText(paint.getExamine());
             ((ItemViewHolder) holder).contentTV.setText(paint.getTitle());
-            ((ItemViewHolder) holder).shangTV.setText(paint.getFang());
-            ((ItemViewHolder) holder).fangTV.setText(paint.getFang());
-            ((ItemViewHolder) holder).tagTV.setText(paint.getTag());
+            ((ItemViewHolder) holder).shangTV.setText(paint.getCopys());
+            ((ItemViewHolder) holder).fangTV.setText(paint.getCopys());
+            if (sb.toString().isEmpty()) {
+                ((ItemViewHolder) holder).tagTV.setVisibility(View.GONE);
+            } else {
+                ((ItemViewHolder) holder).tagTV.setVisibility(View.VISIBLE);
+                ((ItemViewHolder) holder).tagTV.setText(sb.toString());
+            }
             ((ItemViewHolder) holder).userName.setText(paint.getNickname());
 
-            ImageLoaderUtil.loadImg(((ItemViewHolder) holder).userImg, paint.getUserimage());
-            ImageLoaderUtil.loadImg(((ItemViewHolder) holder).img, paint.getImg());
+            ImageLoaderUtil.loadImg(((ItemViewHolder) holder).userImg, paint.getPortrait());
+            ImageLoaderUtil.loadImg(((ItemViewHolder) holder).img, paint.getThumb());
         } else if (holder instanceof ItemViewHolder2) {
-            Paint paint = mData.get(position);
-            if (paint == null) {
-                return;
-            }
             ((ItemViewHolder2) holder).pinglunTV.setText(paint.getComment());
             ((ItemViewHolder2) holder).collectTV.setText(paint.getExamine());
             ((ItemViewHolder2) holder).contentTV.setText(paint.getTitle());
-            ((ItemViewHolder2) holder).shangTV.setText(paint.getFang());
-            ((ItemViewHolder2) holder).fangTV.setText(paint.getFang());
-            ((ItemViewHolder2) holder).tagTV.setText(paint.getTag());
+            ((ItemViewHolder2) holder).shangTV.setText(paint.getCopys());
+            ((ItemViewHolder2) holder).fangTV.setText(paint.getCopys());
+            if (sb.toString().isEmpty()) {
+                ((ItemViewHolder2) holder).tagTV.setVisibility(View.GONE);
+            } else {
+                ((ItemViewHolder2) holder).tagTV.setVisibility(View.VISIBLE);
+                ((ItemViewHolder2) holder).tagTV.setText(sb.toString());
+            }
             ((ItemViewHolder2) holder).userName.setText(paint.getNickname());
 
-            ImageLoaderUtil.loadImg(((ItemViewHolder2) holder).userImg, paint.getUserimage());
-            ImageLoaderUtil.loadImg(((ItemViewHolder2) holder).img, paint.getImg());
+            ImageLoaderUtil.loadImg(((ItemViewHolder2) holder).userImg, paint.getPortrait());
+            ImageLoaderUtil.loadImg(((ItemViewHolder2) holder).img, paint.getThumb());
         }
     }
 
     @Override
     public int getItemCount() {
-        int begin = mShowFooter ? 1 : 0;
-        if (mData == null) {
-            return begin;
-        }
-        return mData.size() + begin;
+        return mData.size();
     }
 
     public Paint getItem(int position) {
         return mData == null ? null : mData.get(position);
     }
 
-    public void isShowFooter(boolean showFooter) {
-        this.mShowFooter = showFooter;
-    }
-
-    public boolean isShowFooter() {
-        return this.mShowFooter;
-    }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.mOnItemClickListener = onItemClickListener;
     }
 
-    public class FooterViewHolder extends RecyclerView.ViewHolder {
-
-        public FooterViewHolder(View view) {
-            super(view);
-        }
-
-    }
 
     public interface OnItemClickListener {
         public void onItemClick(View view, int position);

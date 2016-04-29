@@ -21,9 +21,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="15dp"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher"
-        app:border_color="@color/app_black"
-        app:border_width="1px" />
+        android:src="@mipmap/ic_launcher" />
 
 
     <TextView
@@ -40,6 +38,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:maxLines="2"
         android:text="一个爱好绘画的小男孩~"
         android:textColor="@color/app_gray"
         android:textSize="@dimen/app_textsize_small" />

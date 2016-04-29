@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.artwall.project.widget.MySwipeFreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Creation_swipe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_white">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/Creation_recycleview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:scrollbars="vertical">
+
+    </android.support.v7.widget.RecyclerView>
+
+</com.artwall.project.widget.MySwipeFreshLayout>

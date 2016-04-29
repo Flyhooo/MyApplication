@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <EditText
+        android:id="@+id/Update_Usernfo_ET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@color/app_gray"
+        android:gravity="top|left"
+        android:lineSpacingExtra="6dp"
+        android:padding="16dp"
+        android:textColor="@color/app_text_black"
+        android:textSize="@dimen/app_textsize_big" />
+
+
+    <TextView
+        android:id="@+id/Update_Usernfo_save_TV"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/login_login_bg"
+        android:clickable="true"
+        android:gravity="center"
+        android:onClick="click"
+        android:text="保存"
+        android:textColor="@color/app_green"
+        android:textSize="@dimen/app_textsize_bigest" />
+</LinearLayout>

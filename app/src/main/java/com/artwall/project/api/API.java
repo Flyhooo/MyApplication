@@ -8,7 +8,10 @@ import com.artwall.project.config.Config;
 public class API {
 
 //    http://139.196.11.127/Api/Api.php?m=login
-
+    /**
+     * 图片上传接口
+     */
+    public static final String IMAGE_UPLOAD = "http://139.196.11.127/Api/upload.php?m=upload";
     /**
      * 登录接口
      */
@@ -42,5 +45,22 @@ public class API {
      * 儿童列表
      */
     public static final String Children_List = Config.HTTP_HOST + "m=children";
+    /**
+     * 儿童创作列表
+     */
+    public static final String Children_Creation_List = Config.HTTP_HOST + "m=works";
+    /**
+     * 修改用户信息接口
+     */
+    public static final String Update_Info = Config.HTTP_HOST + "m=modify";
+    /**
+     * 话题列表接口
+     */
+    public static final String Topic_List = Config.HTTP_HOST + "m=message";
+    /**
+     * 话题分类接口
+     */
+    public static final String Topic_Type = Config.HTTP_HOST + "m=messageclass";
+
 
 }

@@ -14,15 +14,15 @@ import com.artwall.project.R;
 import com.artwall.project.api.API;
 import com.artwall.project.application.App;
 import com.artwall.project.base.BaseActivity;
+import com.artwall.project.bean.PaintType;
 import com.artwall.project.bean.User;
-import com.artwall.project.http.HttpClient;
+import com.artwall.project.service.RuntimeInfoService;
 import com.artwall.project.service.UserInfoService;
-import com.artwall.project.util.LogUtil;
 import com.artwall.project.util.NetworkUtil;
 import com.artwall.project.util.ToastUtils;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.RequestParams;
-import com.loopj.android.http.TextHttpResponseHandler;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -30,10 +30,12 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cz.msebera.android.httpclient.Header;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 95 on 2016/4/20.
@@ -46,7 +48,8 @@ public class SplashActivity extends BaseActivity {
     ImageView imageView;
     private Animation animation;
     private boolean isAnimaFinish = false;
-    private boolean isNetFinish = false;
+    private boolean isLoginFinish = false;//登录请求是否结束
+    private boolean isGettypeFinish = false;//获取分类是否结束
 
     @Override
     protected int getContentLayout() {
@@ -66,7 +69,12 @@ public class SplashActivity extends BaseActivity {
         if (null != App.userInfo) {
             doLogin(App.userInfo.getUsername().toString(), App.userInfo.getPassword().toString());
         } else {
-            isNetFinish = true;
+            isLoginFinish = true;
+        }
+        if (!NetworkUtil.getInstance().checkNetworkAvailable()) {
+            isGettypeFinish = true;
+        } else {
+            post(API.Paint_Type, new RequestParams());
         }
 
         animation = AnimationUtils.loadAnimation(this, R.anim.ani_splash);
@@ -79,7 +87,7 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 //如果此时登录请求结束则跳转  否则等待登录请求结束
-                if (isNetFinish) {
+                if (isLoginFinish && isGettypeFinish) {
                     startActivity(new Intent(SplashActivity.this, MainActivity.class));
                     finish();
                 }
@@ -132,6 +140,81 @@ public class SplashActivity extends BaseActivity {
                 "http://g.hiphotos.baidu.com/image/pic/item/6c224f4a20a446230761b9b79c22720e0df3d7bf.jpg",
                 options,
                 new MyImageListener()); //ImageLoadingListener
+
+        if (API.Login.equals(url)) {
+            try {
+                JSONObject jobj = new JSONObject(responseString);
+                String errorCode = jobj.getString("errorCode");
+                if (Integer.parseInt(errorCode) == 0) {
+
+                    JSONObject obj = new JSONObject(responseString);
+                    JSONObject data = obj.getJSONObject("data");
+                    Gson gson = new Gson();
+                    User user = gson.fromJson(data.toString(), User.class);
+                    new UserInfoService(activity).saveObject(user);
+                    App.isLogin = true;
+                    App.userInfo = user;
+                    //如果此时动画结束则跳转  否则等待动画结束
+                    if (isAnimaFinish && isGettypeFinish) {
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                        finish();
+                    }
+                } else {
+                    ToastUtils.toastShaort(activity, jobj.getString("errorMsg"));
+                    if (isAnimaFinish && isGettypeFinish) {
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                        finish();
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            isLoginFinish = true;//设置网络请求结束标志
+        }
+        //获取绘画教学列表分类
+        if (API.Paint_Type.equals(url)) {
+            try {
+                JSONObject jobj = new JSONObject(responseString);
+                String errorCode = jobj.getString("errorCode");
+                if (Integer.parseInt(errorCode) == 0) {
+                    JSONObject obj = new JSONObject(responseString);
+                    JSONArray data = obj.getJSONArray("data");
+                    Gson gson = new Gson();
+                    ArrayList<PaintType> list = gson.fromJson(data.toString(), new TypeToken<List<PaintType>>() {
+                    }.getType());
+                    if (null != list || list.size() != 0) {
+                        RuntimeInfoService.setPaintTypeList(activity, list);
+                    }
+                    //如果此时动画结束则跳转  否则等待动画结束
+                    if (isAnimaFinish && isLoginFinish) {
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                        finish();
+                    }
+                } else {
+                    ToastUtils.toastShaort(activity, jobj.getString("errorMsg"));
+                    if (isAnimaFinish && isLoginFinish) {
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                        finish();
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            isGettypeFinish = true;
+        }
+
+    }
+
+    @Override
+    public void onDataError(String url, String responseString) {
+        super.onDataError(url, responseString);
+        ToastUtils.toastShaort(activity, "网络连接失败");
+        if (API.Login.equals(url)) {
+            isLoginFinish = true;//设置网络请求结束标志
+        } else if (API.Paint_Type.equals(url)) {
+            isGettypeFinish = true;//获取绘画分类结束
+        }
 
     }
 
@@ -194,6 +277,7 @@ public class SplashActivity extends BaseActivity {
     public void doLogin(String userName, String password) {
         if (!NetworkUtil.getInstance().checkNetworkAvailable()) {
             ToastUtils.toastShaort(activity, "请检查网络");
+            isLoginFinish = true;
             return;
         }
 
@@ -201,48 +285,7 @@ public class SplashActivity extends BaseActivity {
         params.put("username", userName);
         params.put("password", password);
 
-        HttpClient.post(API.Login, params, new TextHttpResponseHandler() {
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                ToastUtils.toastShaort(activity, "网络连接失败");
-                isNetFinish = true;//设置网络请求结束标志
-            }
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                LogUtil.logE(API.Login + "---->" + responseString);
-                if (statusCode == 200) {
-                    try {
-                        JSONObject jobj = new JSONObject(responseString);
-                        String errorCode = jobj.getString("errorCode");
-                        if (Integer.parseInt(errorCode) == 0) {
-
-                            JSONObject obj = new JSONObject(responseString);
-                            JSONObject data = obj.getJSONObject("data");
-                            Gson gson = new Gson();
-                            User user = gson.fromJson(data.toString(), User.class);
-                            new UserInfoService(activity).saveObject(user);
-                            App.isLogin = true;
-                            App.userInfo = user;
-                            //如果此时动画结束则跳转  否则等待动画结束
-                            if (isAnimaFinish) {
-                                startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                                finish();
-                            }
-                        } else {
-                            ToastUtils.toastShaort(activity, jobj.getString("errorMsg"));
-                            if (isAnimaFinish) {
-                                startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                                finish();
-                            }
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    isNetFinish = true;//设置网络请求结束标志
-                }
-            }
-        });
+        post(API.Login, params);
     }
 
 }

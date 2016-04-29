@@ -26,6 +26,7 @@ public class App extends Application {
      */
     public static User userInfo = null;
 
+
     @Override
     public void onCreate() {
         super.onCreate();

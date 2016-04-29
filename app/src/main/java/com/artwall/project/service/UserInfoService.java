@@ -86,7 +86,6 @@ public class UserInfoService {
 
         database.execSQL(sql);
         revertSeq();
-        // dbhelper.free();
     }
 
     private void revertSeq() {
@@ -95,6 +94,5 @@ public class UserInfoService {
         Dbhelper dbhelper = Dbhelper.getInstens(context);
         SQLiteDatabase db = dbhelper.getReadableDatabase();
         db.execSQL(sql);
-        // dbhelper.free();
     }
 }

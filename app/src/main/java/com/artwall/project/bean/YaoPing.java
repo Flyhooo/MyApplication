@@ -2,26 +2,25 @@ package com.artwall.project.bean;
 
 public class YaoPing {
 
-
 //	id：ID
 //	userid：用户ID
 //	nickname：昵称
-//	userimage：头像
-//	time：发布时间
-//	content：内容
-//	zan：点赞次数
+//	portrait：头像
+//	inputtime：发布时间
+//	introduce：内容
+//	zambia：点赞次数
 //	comment：评论次数
 //	share：分享次数
-//	imglist：图片列表
+//	content：图片列表
 
 	private String id;
 	private String userid;
-	private String userimage;
+	private String portrait;
 	private String nickname;
-	private String time;
+	private String inputtime;
+	private String introduce;
 	private String content;
-	private String imglist;
-	private String zan;
+	private String zambia;
 	private String comment;
 	private String share;
 
@@ -41,12 +40,12 @@ public class YaoPing {
 		this.userid = userid;
 	}
 
-	public String getUserimage() {
-		return userimage;
+	public String getPortrait() {
+		return portrait;
 	}
 
-	public void setUserimage(String userimage) {
-		this.userimage = userimage;
+	public void setPortrait(String portrait) {
+		this.portrait = portrait;
 	}
 
 	public String getNickname() {
@@ -57,12 +56,20 @@ public class YaoPing {
 		this.nickname = nickname;
 	}
 
-	public String getTime() {
-		return time;
+	public String getInputtime() {
+		return inputtime;
 	}
 
-	public void setTime(String time) {
-		this.time = time;
+	public void setInputtime(String inputtime) {
+		this.inputtime = inputtime;
+	}
+
+	public String getIntroduce() {
+		return introduce;
+	}
+
+	public void setIntroduce(String introduce) {
+		this.introduce = introduce;
 	}
 
 	public String getContent() {
@@ -73,20 +80,12 @@ public class YaoPing {
 		this.content = content;
 	}
 
-	public String getImglist() {
-		return imglist;
+	public String getZambia() {
+		return zambia;
 	}
 
-	public void setImglist(String imglist) {
-		this.imglist = imglist;
-	}
-
-	public String getZan() {
-		return zan;
-	}
-
-	public void setZan(String zan) {
-		this.zan = zan;
+	public void setZambia(String zambia) {
+		this.zambia = zambia;
 	}
 
 	public String getComment() {

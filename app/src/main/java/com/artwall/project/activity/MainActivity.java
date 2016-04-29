@@ -24,17 +24,18 @@ import android.widget.TextView;
 import com.artwall.project.R;
 import com.artwall.project.activity.send.SendChildrenActivity;
 import com.artwall.project.activity.send.SendPhotographyActivity;
-import com.artwall.project.activity.send.SendQuestionActivity;
+import com.artwall.project.activity.send.SendTopicActivity;
 import com.artwall.project.activity.send.SendTeachActivity;
 import com.artwall.project.activity.send.SendYaopingActivity;
 import com.artwall.project.application.App;
 import com.artwall.project.base.BaseActivity;
 import com.artwall.project.config.Config;
 import com.artwall.project.fragment.ChildrenFragment;
+import com.artwall.project.fragment.CreationFragment;
 import com.artwall.project.fragment.MarketFragment;
 import com.artwall.project.fragment.PaintFragment;
 import com.artwall.project.fragment.PhotographyFragment;
-import com.artwall.project.fragment.QuestionFragment;
+import com.artwall.project.fragment.TopicFragment;
 import com.artwall.project.fragment.YaoPingFragment;
 import com.artwall.project.manager.AppManager;
 import com.artwall.project.util.DialogUtils;
@@ -56,16 +57,17 @@ public class MainActivity extends BaseActivity
     private RelativeLayout cloud;
 
     /**
-     * 0、绘画 1、大咖 2、儿童 3、话题 4、集市
+     * 0、绘画 1、香饽饽 2、儿童 3、话题 4、集市
      */
     private int type = 0;
 
     private PaintFragment paintFragment;
     private PhotographyFragment photographyFragment;
     private ChildrenFragment childrenFragment;
-    private QuestionFragment questionFragment;
+    private TopicFragment topicFragment;
     private MarketFragment marketFragment;
     private YaoPingFragment yaoPingFragment;
+    private CreationFragment creationFragment;
 
 
     /**
@@ -148,11 +150,11 @@ public class MainActivity extends BaseActivity
         //根据登录状态初始化个人资料
         if (App.isLogin) {
             userName.setText(App.userInfo.getNickname().toString());
-            ImageLoaderUtil.loadImg(userImg, App.userInfo.getImg());
-            if (null == App.userInfo.getIntroduction()) {
+            ImageLoaderUtil.loadImg(userImg, App.userInfo.getPortrait());
+            if (null == App.userInfo.getIntroduce()) {
                 userIntroduc.setText("我就是我，没有简介的我...");
             } else {
-                userIntroduc.setText(App.userInfo.getIntroduction().toString());
+                userIntroduc.setText(App.userInfo.getIntroduce().toString());
             }
         } else {
             userIntroduc.setVisibility(View.GONE);
@@ -167,9 +169,10 @@ public class MainActivity extends BaseActivity
         paintFragment = PaintFragment.getInstance();
         photographyFragment = PhotographyFragment.getInstance();
         childrenFragment = ChildrenFragment.getInstance();
-        questionFragment = QuestionFragment.getInstance();
+        topicFragment = TopicFragment.getInstance();
         marketFragment = MarketFragment.getInstance();
         yaoPingFragment = YaoPingFragment.getInstance();
+        creationFragment = CreationFragment.getInstance();
         currentFragment = paintFragment;
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.main_contains, paintFragment, "paint").addToBackStack(null).commit();
@@ -274,7 +277,7 @@ public class MainActivity extends BaseActivity
     /**
      * 改变主界面显示
      *
-     * @param index 0、绘画 1、大咖 2、儿童 3、话题 4、集市
+     * @param index 0、绘画 1、香饽饽 2、儿童 3、话题 4、集市
      */
     private void changeContent(int index) {
         if (index == type) {
@@ -300,7 +303,7 @@ public class MainActivity extends BaseActivity
                     titleTV_Only.setVisibility(View.VISIBLE);
                     topLL.setVisibility(View.GONE);
                 }
-                titleTV_Only.setText("大咖");
+                titleTV_Only.setText("香饽饽");
                 change(photographyFragment, "photo");
                 break;
             case 2:
@@ -323,7 +326,7 @@ public class MainActivity extends BaseActivity
                     topLL.setVisibility(View.GONE);
                 }
                 titleTV_Only.setText("话题");
-                change(questionFragment, "question");
+                change(topicFragment, "question");
                 break;
             case 4:
                 if (titleTV_Only.getVisibility() == View.GONE) {
@@ -365,14 +368,13 @@ public class MainActivity extends BaseActivity
                         change(yaoPingFragment, "yaoping");
                     } else if (type == 2) {
                         //儿童创作
-                        change(yaoPingFragment, "yaoping");
+                        change(creationFragment, "creation");
                     }
-
                 }
                 break;
 
             case R.id.main_send_question_TV:
-                startActivity(new Intent(activity, SendQuestionActivity.class));
+                startActivity(new Intent(activity, SendTopicActivity.class));
                 closeMenu(fab);
                 break;
 

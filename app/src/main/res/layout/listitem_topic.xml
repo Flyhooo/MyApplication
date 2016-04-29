@@ -8,6 +8,7 @@
     android:paddingRight="8dp">
 
     <LinearLayout
+        android:id="@+id/listitem_Question_tag_LL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -41,6 +42,16 @@
             android:background="@drawable/tag_background"
             android:padding="3dp"
             android:text="儿童"
+            android:textColor="@color/app_text_white"
+            android:textSize="@dimen/app_textsize_small" />
+        <TextView
+            android:id="@+id/listitem_Question_tag4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tag_background"
+            android:padding="3dp"
+            android:text="儿童"
+            android:layout_margin="10dp"
             android:textColor="@color/app_text_white"
             android:textSize="@dimen/app_textsize_small" />
     </LinearLayout>
@@ -95,6 +106,7 @@
         android:id="@+id/listitem_Question_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:lineSpacingExtra="4dp"
         android:layout_marginTop="5dp"
         android:maxLines="2"
         android:ellipsize="end"
@@ -112,6 +124,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginTop="5dp"
+            android:scaleType="centerCrop"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="5dp" />
 

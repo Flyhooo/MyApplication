@@ -57,15 +57,15 @@ public class YaoPingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             YaoPing yaoping = list.get(position);
             if (yaoping != null) {
                 ((ItemViewHolder) holder).userName.setText(yaoping.getNickname());
-                ((ItemViewHolder) holder).time.setText(yaoping.getTime());
-                ((ItemViewHolder) holder).content.setText(yaoping.getContent());
-                ((ItemViewHolder) holder).zanCount.setText("点赞("+yaoping.getZan()+")");
+                ((ItemViewHolder) holder).time.setText(yaoping.getInputtime());
+                ((ItemViewHolder) holder).content.setText(yaoping.getIntroduce());
+                ((ItemViewHolder) holder).zanCount.setText("点赞("+yaoping.getZambia()+")");
                 ((ItemViewHolder) holder).shareCount.setText("分享("+yaoping.getShare()+")");
                 ((ItemViewHolder) holder).pinglunCount.setText("评论("+yaoping.getComment()+")");
-                ImageLoaderUtil.loadImg(((ItemViewHolder) holder).userImage, yaoping.getUserimage());
+                ImageLoaderUtil.loadImg(((ItemViewHolder) holder).userImage, yaoping.getPortrait());
 
-                if (yaoping.getImglist() != null) {
-                    String[] imgList = yaoping.getImglist().split(",");
+                if (yaoping.getContent() != null) {
+                    String[] imgList = yaoping.getContent().split(",");
                     int imgCount = imgList.length;
                     switch (imgCount) {
                         case 1:

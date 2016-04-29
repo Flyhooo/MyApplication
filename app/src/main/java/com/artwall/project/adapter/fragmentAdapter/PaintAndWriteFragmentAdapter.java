@@ -10,10 +10,10 @@ import java.util.ArrayList;
  * Created by 95 on 2016/3/30.
  */
 public class PaintAndWriteFragmentAdapter extends FragmentStatePagerAdapter {
-    private String[] mtitles;
+    private ArrayList<String> mtitles;
     private ArrayList<Fragment> mFragments;
 
-    public PaintAndWriteFragmentAdapter(FragmentManager fm, String[] titles, ArrayList<Fragment> fragments) {
+    public PaintAndWriteFragmentAdapter(FragmentManager fm, ArrayList<String> titles, ArrayList<Fragment> fragments) {
         super(fm);
         this.mtitles = titles;
         this.mFragments = fragments;
@@ -33,6 +33,6 @@ public class PaintAndWriteFragmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mtitles[position];
+        return mtitles.get(position);
     }
 }

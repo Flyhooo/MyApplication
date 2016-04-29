@@ -32,6 +32,16 @@ public class ImageLoaderUtil {
         ImageLoader.getInstance().displayImage(url, imageView, options);
     }
 
+    /**
+     * 加载本地图片
+     */
+    public static void loadLocalImage(String url, ImageView iv) {
+
+        if (url == null)
+            return;
+        ImageLoader.getInstance().displayImage("file:/" + url, iv, options);
+    }
+
     static DisplayImageOptions options;
 
     public static void init(Context context) {

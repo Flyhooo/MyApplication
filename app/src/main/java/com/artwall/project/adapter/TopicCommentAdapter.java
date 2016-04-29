@@ -18,12 +18,12 @@ import java.util.ArrayList;
 /**
  * Created by 95 on 2016/3/31.
  */
-public class QuestionCommentAdapter extends BaseAdapter {
+public class TopicCommentAdapter extends BaseAdapter {
 
     private Context context;
     private ArrayList<QuestionComment> list;
 
-    public QuestionCommentAdapter(Context context, ArrayList<QuestionComment> list) {
+    public TopicCommentAdapter(Context context, ArrayList<QuestionComment> list) {
         this.context = context;
         this.list = list;
     }

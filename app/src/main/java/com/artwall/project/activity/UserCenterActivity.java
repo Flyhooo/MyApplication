@@ -48,10 +48,10 @@ public class UserCenterActivity extends BaseActivity {
         for (int i = 0; i < titles.length; i++) {
             fragmentList.add(new SubPaintFragment());
         }
-        adapter = new PaintAndWriteFragmentAdapter(getSupportFragmentManager(), titles, fragmentList);
-        viewPager.setAdapter(adapter);
-        tabs.setupWithViewPager(viewPager);
-        tabs.setTabsFromPagerAdapter(adapter);
+//        adapter = new PaintAndWriteFragmentAdapter(getSupportFragmentManager(), titles, fragmentList);
+//        viewPager.setAdapter(adapter);
+//        tabs.setupWithViewPager(viewPager);
+//        tabs.setTabsFromPagerAdapter(adapter);
 
 
     }

@@ -26,9 +26,18 @@
                 android:textColor="@color/app_text_black"
                 android:textSize="@dimen/app_textsize_big" />
 
+            <ImageView
+                android:id="@+id/SendTeach_image"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:onClick="click"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_menu_camera" />
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="100dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/app_gray"
                 android:gravity="top|left"
@@ -37,14 +46,41 @@
                 android:textColor="@color/app_text_gray"
                 android:textSize="@dimen/app_textsize_normal" />
 
+            <com.artwall.project.widget.NScroll.NoScrollListView
+                android:id="@+id/SendTeach_nsListview"
+                android:layout_width="match_parent"
+                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content"></com.artwall.project.widget.NScroll.NoScrollListView>
+
+            <TextView
+                android:id="@+id/SendTeach_add_TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:padding="8dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="click"
+                android:text="+ 添加" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/app_gray"
+                android:gravity="top|left"
+                android:hint="小贴士"
+                android:padding="5dp"
+                android:textColor="@color/app_text_gray"
+                android:textSize="@dimen/app_textsize_normal" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="25dp"
                 android:background="@color/app_green"
                 android:gravity="center"
-                android:layout_marginTop="25dp"
                 android:text="发布"
-                android:layout_marginBottom="16dp"
                 android:textColor="@color/app_text_white"
                 android:textSize="@dimen/app_textsize_bigest" />
 

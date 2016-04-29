@@ -172,11 +172,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/listitem_teach_LL2"
-            android:layout_centerHorizontal="true"
             android:layout_marginBottom="5dp"
             android:text="#中国画# #山水画#"
             android:textColor="@color/app_green"
-            android:textSize="12sp" />
+            android:textSize="@dimen/app_textsize_small" />
     </RelativeLayout>
 
 </RelativeLayout>

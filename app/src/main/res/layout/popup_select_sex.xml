@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/app_white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/popup_selectSex_male_TV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="男"
+        android:textColor="@color/app_text_black"
+        android:textSize="@dimen/app_textsize_bigest" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/app_line_gray" />
+
+    <TextView
+        android:id="@+id/popup_selectSex_female_TV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="女"
+        android:textColor="@color/app_text_black"
+        android:textSize="@dimen/app_textsize_bigest" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/app_line_gray" />
+
+    <TextView
+        android:id="@+id/popup_selectSex_secert_TV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="保密"
+        android:textColor="@color/app_text_black"
+        android:textSize="@dimen/app_textsize_bigest" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/app_gray" />
+
+    <TextView
+        android:id="@+id/popup_selectSex_cancle_TV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="取消"
+        android:textColor="@color/app_text_black"
+        android:textSize="@dimen/app_textsize_bigest" />
+
+</LinearLayout>

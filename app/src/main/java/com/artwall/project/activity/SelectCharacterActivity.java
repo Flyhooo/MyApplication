@@ -58,7 +58,7 @@ public class SelectCharacterActivity extends BaseActivity {
                 params.put("username", username);
                 params.put("password", password);
                 params.put("nickname", nickname);
-                params.put("character", "学生");
+                params.put("characte", "学生");
                 post(API.Register, params);
 
                 break;

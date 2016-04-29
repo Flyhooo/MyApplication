@@ -5,47 +5,72 @@ import java.io.Serializable;
 /**
  * Created by 95 on 2016/4/21.
  */
-public class User implements Serializable{
+public class User implements Serializable {
+
+//    userid：ID
+//    username：账号
+//    password：密码
+//    nickname：昵称
+//    portrait：头像
+//    introduce：简介
+//    lastdate：上次登录时间
+//    characte：角色
+//    groups：分组
+//    sex：性别
+//    amount：余额
+//    phone：手机
+//    email：邮箱
 
     private String userid;
-    /**登录名*/
+    /**
+     * 登录名
+     */
     private String username;
-    /**密码*/
+    /**
+     * 密码
+     */
     private String password;
-    /**性别*/
+    /**
+     * 性别
+     */
     private String sex;
-    /**头像*/
-    private String img;
-    /** 昵称*/
+    /**
+     * 头像
+     */
+    private String portrait;
+    /**
+     * 昵称
+     */
     private String nickname;
-    /**个人简介*/
-    private String introduction;
-    /**最后一次登录时间*/
-    private String lastlogin;
-    /**用户身份*/
-    private String character;
-    /**账户余额*/
-    private String account;
-    /**手机号码*/
+    /**
+     * 个人简介
+     */
+    private String introduce;
+    /**
+     * 最后一次登录时间
+     */
+    private String lastdate;
+    /**
+     * 用户身份
+     */
+    private String characte;
+    /**
+     * 角色中感兴趣
+     */
+    private String groups;
+    /**
+     * 账户余额
+     */
+    private String amount;
+    /**
+     * 手机号码
+     */
     private String phone;
-    /**邮箱*/
+    /**
+     * 邮箱
+     */
     private String email;
 
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
 
     public String getUserid() {
         return userid;
@@ -71,6 +96,22 @@ public class User implements Serializable{
         this.password = password;
     }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getPortrait() {
+        return portrait;
+    }
+
+    public void setPortrait(String portrait) {
+        this.portrait = portrait;
+    }
+
     public String getNickname() {
         return nickname;
     }
@@ -79,36 +120,44 @@ public class User implements Serializable{
         this.nickname = nickname;
     }
 
-    public String getIntroduction() {
-        return introduction;
+    public String getIntroduce() {
+        return introduce;
     }
 
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
     }
 
-    public String getLastlogin() {
-        return lastlogin;
+    public String getLastdate() {
+        return lastdate;
     }
 
-    public void setLastlogin(String lastlogin) {
-        this.lastlogin = lastlogin;
+    public void setLastdate(String lastdate) {
+        this.lastdate = lastdate;
     }
 
-    public String getCharacter() {
-        return character;
+    public String getCharacte() {
+        return characte;
     }
 
-    public void setCharacter(String character) {
-        this.character = character;
+    public void setCharacte(String characte) {
+        this.characte = characte;
     }
 
-    public String getAccount() {
-        return account;
+    public String getGroups() {
+        return groups;
     }
 
-    public void setAccount(String account) {
-        this.account = account;
+    public void setGroups(String groups) {
+        this.groups = groups;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
     }
 
     public String getPhone() {

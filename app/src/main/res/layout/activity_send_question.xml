@@ -37,13 +37,22 @@
                 android:textColor="@color/app_text_gray"
                 android:textSize="@dimen/app_textsize_normal" />
 
+            <com.artwall.project.widget.NScroll.NoScrollGridView
+                android:id="@+id/SendTopic_nsGridview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:horizontalSpacing="10dp"
+                android:numColumns="5"
+                android:verticalSpacing="10dp"></com.artwall.project.widget.NScroll.NoScrollGridView>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="25dp"
                 android:background="@color/app_green"
                 android:gravity="center"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="16dp"
                 android:text="发布"
                 android:textColor="@color/app_text_white"
                 android:textSize="@dimen/app_textsize_bigest" />

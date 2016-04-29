@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.artwall.project.R;
-import com.artwall.project.adapter.QuestionCommentAdapter;
+import com.artwall.project.adapter.TopicCommentAdapter;
 import com.artwall.project.api.IMG;
 import com.artwall.project.base.BaseActivity;
 import com.artwall.project.bean.QuestionComment;
@@ -21,7 +21,7 @@ public class QuestionDetailActivity extends BaseActivity {
     private View headview;
     private ListView listView;
     private ArrayList<QuestionComment> list = new ArrayList<>();
-    private QuestionCommentAdapter adapter;
+    private TopicCommentAdapter adapter;
 
     @Override
     protected int getContentLayout() {
@@ -62,7 +62,7 @@ public class QuestionDetailActivity extends BaseActivity {
             }
             list.add(data);
         }
-        adapter = new QuestionCommentAdapter(this, list);
+        adapter = new TopicCommentAdapter(this, list);
         listView.addHeaderView(headview);
         listView.setAdapter(adapter);
 
