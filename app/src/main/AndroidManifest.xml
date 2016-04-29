@@ -130,9 +130,14 @@
             android:name=".activity.FrogetPwdStep2Activity"
             android:label="@string/app_name"></activity>
 
+        <!-- 多图选择器-->
         <activity
             android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity"
             android:configChanges="orientation|screenSize" />
+        <!-- 修改头像 -->
+        <activity
+            android:name=".activity.SelectPicPopupWindow"
+            android:theme="@style/MyDialogStyleBottom" />
 
     </application>
 

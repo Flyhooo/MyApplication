@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.lang.ref.WeakReference;
 
 /**
@@ -56,4 +57,24 @@ public class ImageUtil {
                 BitmapFactory.decodeFile(path, opts));
         return Bitmap.createScaledBitmap(weak.get(), w, h, true);
     }
+
+    /**
+     * 通过存储的图片路径获取bitmap
+     *
+     * @param path
+     * @return
+     */
+    public static Bitmap convertToBitmap(String path) {
+        Bitmap bitmap = null;
+        try {
+            File file = new File(path);
+            if (file.exists()) {
+                bitmap = BitmapFactory.decodeFile(path);
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return bitmap;
+    }
+
 }

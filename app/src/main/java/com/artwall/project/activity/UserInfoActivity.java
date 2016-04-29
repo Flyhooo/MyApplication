@@ -20,14 +20,13 @@ import com.artwall.project.bean.User;
 import com.artwall.project.service.UserInfoService;
 import com.artwall.project.util.ImageLoaderUtil;
 import com.artwall.project.util.ImageUtil;
+import com.artwall.project.util.LogUtil;
 import com.artwall.project.util.ToastUtils;
 import com.google.gson.Gson;
 import com.loopj.android.http.RequestParams;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 import me.nereo.multi_image_selector.MultiImageSelectorActivity;
 
@@ -53,7 +52,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
     private ImageView image;
 
     private final int REQUEST_CODE = 0x0000;
-    private final int REQUEST_IMAGE = 0x0001;
+    private final int REQUEST_IMAGE = 1;
 
     @Override
     protected void initGui() {
@@ -97,7 +96,8 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
     public void click(View view) {
         switch (view.getId()) {
             case R.id.Userinfo_userimg_RL:
-                getImage();
+                startActivityForResult(
+                        new Intent(this, SelectPicPopupWindow.class), REQUEST_IMAGE);
                 break;
             case R.id.Userinfo_nickname_RL:
                 Intent intent = new Intent(activity, UpdateUserinfoActivity.class);
@@ -160,15 +160,29 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
             //修改昵称
             nicknameTV = (TextView) this.findViewById(R.id.userInfo_nickname);
         } else if (requestCode == REQUEST_IMAGE && data != null) {
-            ArrayList<String> url = new ArrayList<>();
-            url = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
-            if (url.size() > 0) {
-                Bitmap bm = ImageUtil.convertToBitmap(url.get(0), 100, 100);
-                String image = ImageUtil.convertIconToString(bm);
-                RequestParams params = new RequestParams();
-                params.put("images", image);
-                post(API.IMAGE_UPLOAD, params);
+            String file = null;
+            Bitmap bm = null;
+            switch (resultCode) {
+                case 8:
+                    if (data != null) {
+                        file = data.getStringExtra("file");
+                    }
+                    bm = ImageUtil.convertToBitmap(file, 200, 200);
+                    break;
+
+                case 9:
+                    if (data != null) {
+                        file = data.getStringExtra("file");
+                        LogUtil.logE("file---" + file);
+                    }
+                    bm = ImageUtil.convertToBitmap(file, 200, 200);
+                    break;
             }
+            String image = ImageUtil.convertIconToString(bm);
+            RequestParams params = new RequestParams();
+            params.put("images", image);
+            post(API.IMAGE_UPLOAD, params);
+
 
         }
     }
@@ -201,7 +215,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         female.setOnClickListener(this);
         secert.setOnClickListener(this);
         cancle.setOnClickListener(this);
-        popWin.showAtLocation(toolbar, Gravity.BOTTOM, 0, 0);
+        popWin.showAtLocation(toolbar, Gravity.BOTTOM, 1000, 1000);
     }
 
     /**
