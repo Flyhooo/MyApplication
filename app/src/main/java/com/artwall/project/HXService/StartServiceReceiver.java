@@ -17,5 +17,6 @@ public class StartServiceReceiver extends BroadcastReceiver {
         Intent startServiceIntent = new Intent(context, EMChatService.class);
         startServiceIntent.putExtra("reason", "boot");
         context.startService(startServiceIntent);
+
     }
 }
