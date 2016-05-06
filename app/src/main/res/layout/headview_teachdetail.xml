@@ -16,12 +16,14 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="5dp"
             android:clickable="true"
             android:onClick="click"
             android:scaleType="centerCrop" />
 
         <TextView
+            android:id="@+id/teachDetail_headview_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
@@ -31,6 +33,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/teachDetail_headview_inputtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -53,11 +56,11 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:background="@color/app_gray"
         android:gravity="center_vertical"
-        android:paddingBottom="3dp"
-        android:paddingTop="3dp">
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -78,9 +81,10 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/teachDetail_headview_introduce"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:lineSpacingMultiplier="1.5"
         android:text="动漫的绘制也需要掌握一些绘画的规律和技巧，比如，男女老少不同人物的特征，喜怒哀乐的各种表情，各种服装和面料的特点，运动规律和节奏控制等。"
         android:textColor="@color/app_text_black"
@@ -90,14 +94,14 @@
         android:id="@+id/teachDetail_headview_img"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:scaleType="centerCrop" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
         android:background="@color/app_gray"
         android:orientation="vertical"
         android:padding="10dp">

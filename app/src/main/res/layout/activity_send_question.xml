@@ -19,6 +19,7 @@
             android:paddingRight="16dp">
 
             <EditText
+                android:id="@+id/SendTopic_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -27,6 +28,7 @@
                 android:textSize="@dimen/app_textsize_big" />
 
             <EditText
+                android:id="@+id/SendTopic_introduce"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="20dp"
@@ -47,12 +49,15 @@
                 android:verticalSpacing="10dp"></com.artwall.project.widget.NScroll.NoScrollGridView>
 
             <TextView
+                android:id="@+id/SendTopic_send"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="25dp"
                 android:background="@color/app_green"
+                android:clickable="true"
                 android:gravity="center"
+                android:onClick="click"
                 android:text="发布"
                 android:textColor="@color/app_text_white"
                 android:textSize="@dimen/app_textsize_bigest" />

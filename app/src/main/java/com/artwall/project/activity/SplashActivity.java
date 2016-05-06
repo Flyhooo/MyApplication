@@ -18,10 +18,13 @@ import com.artwall.project.bean.PaintType;
 import com.artwall.project.bean.User;
 import com.artwall.project.service.RuntimeInfoService;
 import com.artwall.project.service.UserInfoService;
+import com.artwall.project.util.LogUtil;
 import com.artwall.project.util.NetworkUtil;
 import com.artwall.project.util.ToastUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.chat.EMClient;
 import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -66,8 +69,9 @@ public class SplashActivity extends BaseActivity {
     protected void initData() {
 
         App.userInfo = new UserInfoService(activity).getObject();
-        if (null != App.userInfo) {
+        if (null != App.userInfo && null != App.userInfo.getUsername() && null != App.userInfo.getPassword()) {
             doLogin(App.userInfo.getUsername().toString(), App.userInfo.getPassword().toString());
+            HXLogin("18511111111");
         } else {
             isLoginFinish = true;
         }
@@ -128,13 +132,13 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void onDataOK(String url, String responseString) {
         super.onDataOK(url, responseString);
-        JSONObject jsonObject = null;
-        try {
-            jsonObject = new JSONObject(responseString);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        String img = jsonObject.optString("img");
+//        JSONObject jsonObject = null;
+//        try {
+//            jsonObject = new JSONObject(responseString);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        String img = jsonObject.optString("img");
 
         ImageLoader.getInstance().loadImage(
                 "http://g.hiphotos.baidu.com/image/pic/item/6c224f4a20a446230761b9b79c22720e0df3d7bf.jpg",
@@ -212,8 +216,17 @@ public class SplashActivity extends BaseActivity {
         ToastUtils.toastShaort(activity, "网络连接失败");
         if (API.Login.equals(url)) {
             isLoginFinish = true;//设置网络请求结束标志
-        } else if (API.Paint_Type.equals(url)) {
+            if (isAnimaFinish && isGettypeFinish) {
+                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                finish();
+            }
+        }
+        if (API.Paint_Type.equals(url)) {
             isGettypeFinish = true;//获取绘画分类结束
+            if (isAnimaFinish && isLoginFinish) {
+                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                finish();
+            }
         }
 
     }
@@ -286,6 +299,33 @@ public class SplashActivity extends BaseActivity {
         params.put("password", password);
 
         post(API.Login, params);
+    }
+
+    public void HXLogin(String username) {
+
+        EMClient.getInstance().login(username, "123456", new EMCallBack() {//回调
+            @Override
+            public void onSuccess() {
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        EMClient.getInstance().groupManager().loadAllGroups();
+                        EMClient.getInstance().chatManager().loadAllConversations();
+                        LogUtil.logE("HXLogin--->登陆聊天服务器成功！");
+                    }
+                });
+            }
+
+            @Override
+            public void onProgress(int progress, String status) {
+
+            }
+
+            @Override
+            public void onError(int code, String message) {
+                LogUtil.logE("HXLogin--->登陆聊天服务器失败！");
+            }
+        });
+
     }
 
 }

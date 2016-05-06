@@ -73,7 +73,9 @@ public class SubPaintFragment extends BaseFragment {
         adapter.setOnItemClickListener(new PaintAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                startActivity(new Intent(getActivity(), PaintDetailActivity.class));
+                Intent intent = new Intent(getActivity(), PaintDetailActivity.class);
+                intent.putExtra("ID", list.get(position).getId());
+                startActivity(intent);
             }
         });
         recyclerView.setAdapter(adapter);
@@ -105,6 +107,7 @@ public class SubPaintFragment extends BaseFragment {
     @Override
     public void onDataOK(String url, String responseString) {
         super.onDataOK(url, responseString);
+
         if (tag == 1) {
             swipe.setRefreshing(false);
         } else if (tag == 2) {

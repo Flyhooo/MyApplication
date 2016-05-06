@@ -1,5 +1,7 @@
 package com.artwall.project.bean;
 
+import java.util.ArrayList;
+
 /**
  * Created by 95 on 2016/3/31.
  */
@@ -18,6 +20,24 @@ public class Children {
 //    copys：模仿次数
 
 
+//    id：ID
+//    userid：用户ID
+//    nickname：用户昵称
+//    portrait：用户头像
+//    userintroduce：用户简介
+//    inputtime：时间
+//    title：标题
+//    introduce：简介
+//    thumb：成品图
+//    material：耗材列表
+//    content：步骤列表
+//    copyslist：模仿列表
+//    tips：小贴士
+//    reward：打赏
+//    zambia：点赞
+//    comment：评论
+
+
     private String id;
     private String userid;
     private String nickname;
@@ -30,6 +50,60 @@ public class Children {
     private String comment;
     private String copys;
 
+    private ArrayList<Content> content;
+    private String tips;
+    private String reward;
+    private String material;
+    private String inputtime;
+    private String introduce;
+
+    public ArrayList<Content> getContent() {
+        return content;
+    }
+
+    public void setContent(ArrayList<Content> content) {
+        this.content = content;
+    }
+
+    public String getTips() {
+        return tips;
+    }
+
+    public void setTips(String tips) {
+        this.tips = tips;
+    }
+
+    public String getReward() {
+        return reward;
+    }
+
+    public void setReward(String reward) {
+        this.reward = reward;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+
+    public String getInputtime() {
+        return inputtime;
+    }
+
+    public void setInputtime(String inputtime) {
+        this.inputtime = inputtime;
+    }
+
+    public String getIntroduce() {
+        return introduce;
+    }
+
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
+    }
 
     public String getId() {
         return id;
@@ -117,5 +191,26 @@ public class Children {
 
     public void setCopys(String copys) {
         this.copys = copys;
+    }
+
+    class Content{
+        private String images;
+        private String content;
+
+        public String getImages() {
+            return images;
+        }
+
+        public void setImages(String images) {
+            this.images = images;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
     }
 }

@@ -1,10 +1,13 @@
 package com.artwall.project.fragment;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
 
 import com.artwall.project.R;
+import com.artwall.project.activity.ChildrenDetailActivity;
 import com.artwall.project.adapter.ChildrenAdapter;
 import com.artwall.project.api.API;
 import com.artwall.project.base.BaseFragment;
@@ -92,6 +95,15 @@ public class ChildrenFragment extends BaseFragment {
             }
         });
         getData(page);
+
+        adapter.setOnItemClickListener(new ChildrenAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(activity, ChildrenDetailActivity.class);
+                intent.putExtra("ID", list.get(position).getId());
+                startActivity(intent);
+            }
+        });
 
     }
 

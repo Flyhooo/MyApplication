@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import com.artwall.project.R;
 import com.artwall.project.adapter.fragmentAdapter.PaintAndWriteFragmentAdapter;
 import com.artwall.project.base.BaseActivity;
-import com.artwall.project.bean.TeachDetail;
+import com.artwall.project.bean.PaintDetail;
 import com.artwall.project.fragment.sub.SubPaintFragment;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class UserCenterActivity extends BaseActivity {
 
     private ArrayList<Fragment> fragmentList;
     private TabLayout tabs;
-    private ArrayList<TeachDetail> list = new ArrayList<>();
+    private ArrayList<PaintDetail> list = new ArrayList<>();
     private PaintAndWriteFragmentAdapter adapter;
     private ViewPager viewPager;
     @Override

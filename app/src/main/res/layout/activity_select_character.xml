@@ -24,37 +24,33 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/SelectCharacter_teacher_TV"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:clickable="true"
                 android:drawablePadding="8dp"
                 android:drawableTop="@drawable/ic_menu_camera"
                 android:gravity="center_horizontal"
+                android:onClick="click"
                 android:text="老师"
                 android:textColor="@color/app_text_black"
                 android:textSize="@dimen/app_textsize_big" />
 
             <TextView
+                android:id="@+id/SelectCharacter_painter_TV"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:clickable="true"
                 android:drawablePadding="8dp"
                 android:drawableTop="@drawable/ic_menu_camera"
                 android:gravity="center_horizontal"
+                android:onClick="click"
                 android:text="画家"
                 android:textColor="@color/app_text_black"
                 android:textSize="@dimen/app_textsize_big" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawablePadding="8dp"
-                android:drawableTop="@drawable/ic_menu_camera"
-                android:gravity="center_horizontal"
-                android:text="书法家"
-                android:textColor="@color/app_text_black"
-                android:textSize="@dimen/app_textsize_big" />
 
         </LinearLayout>
 
@@ -64,17 +60,18 @@
 
             <!--画家-->
             <LinearLayout
-                android:id="@+id/SelectCharacter_tag_huajia_LL"
+                android:id="@+id/SelectCharacter_tag_LL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:text="请选择擅长领域"
+                    android:text="请选择感兴趣的分类"
                     android:textColor="@color/app_text_gray"
                     android:textSize="@dimen/app_textsize_normal" />
 
@@ -84,49 +81,53 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/SelectCharacter_tags_11"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:clickable="true"
                         android:gravity="center"
+                        android:onClick="click"
                         android:paddingBottom="8dp"
                         android:paddingTop="8dp"
-                        android:text="国画" />
+                        android:text="素描" />
 
                     <TextView
+                        android:id="@+id/SelectCharacter_tags_12"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:clickable="true"
                         android:gravity="center"
+                        android:onClick="click"
                         android:paddingBottom="8dp"
                         android:paddingTop="8dp"
-                        android:text="国画" />
+                        android:text="速写" />
 
                     <TextView
+                        android:id="@+id/SelectCharacter_tags_13"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:clickable="true"
                         android:gravity="center"
+                        android:onClick="click"
                         android:paddingBottom="8dp"
                         android:paddingTop="8dp"
-                        android:text="国画" />
+                        android:text="彩铅" />
 
                     <TextView
+                        android:id="@+id/SelectCharacter_tags_14"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:clickable="true"
                         android:gravity="center"
+                        android:onClick="click"
                         android:paddingBottom="8dp"
                         android:paddingTop="8dp"
-                        android:text="国画" />
+                        android:text="水彩" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:paddingBottom="8dp"
-                        android:paddingTop="8dp"
-                        android:text="国画" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -135,49 +136,53 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/SelectCharacter_tags_21"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:clickable="true"
                         android:gravity="center"
+                        android:onClick="click"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:text="水粉" />
+
+                    <TextView
+                        android:id="@+id/SelectCharacter_tags_22"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:onClick="click"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:text="油画" />
+
+                    <TextView
+                        android:id="@+id/SelectCharacter_tags_23"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:onClick="click"
                         android:paddingBottom="8dp"
                         android:paddingTop="8dp"
                         android:text="国画" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:paddingBottom="8dp"
-                        android:paddingTop="8dp"
-                        android:text="国画" />
 
                     <TextView
+                        android:id="@+id/SelectCharacter_tags_24"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:clickable="true"
                         android:gravity="center"
+                        android:onClick="click"
                         android:paddingBottom="8dp"
                         android:paddingTop="8dp"
-                        android:text="国画" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:paddingBottom="8dp"
-                        android:paddingTop="8dp"
-                        android:text="国画" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:paddingBottom="8dp"
-                        android:paddingTop="8dp"
-                        android:text="国画" />
+                        android:text="漫画" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -185,14 +190,42 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
+
                     <TextView
+                        android:id="@+id/SelectCharacter_tags_31"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:clickable="true"
                         android:gravity="center"
+                        android:onClick="click"
                         android:paddingBottom="8dp"
                         android:paddingTop="8dp"
-                        android:text="国画" />
+                        android:text="版画" />
+
+                    <TextView
+                        android:id="@+id/SelectCharacter_tags_32"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:onClick="click"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:text="插画" />
+
+                    <TextView
+                        android:id="@+id/SelectCharacter_tags_33"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:onClick="click"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:text="儿童" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -200,35 +233,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:paddingBottom="8dp"
-                        android:paddingTop="8dp"
-                        android:text="国画" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:paddingBottom="8dp"
-                        android:paddingTop="8dp"
-                        android:text="国画" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:paddingBottom="8dp"
-                        android:paddingTop="8dp"
-                        android:text="国画" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:paddingBottom="8dp"
-                        android:paddingTop="8dp"
-                        android:text="国画" />
+                        android:paddingTop="8dp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -237,46 +242,63 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="30dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawablePadding="8dp"
-                android:drawableTop="@drawable/ic_menu_camera"
-                android:gravity="center_horizontal"
-                android:text="摄影师"
-                android:textColor="@color/app_text_black"
-                android:textSize="@dimen/app_textsize_big" />
 
             <TextView
+                android:id="@+id/SelectCharacter_student_TV"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:clickable="true"
                 android:drawablePadding="8dp"
                 android:drawableTop="@drawable/ic_menu_camera"
                 android:gravity="center_horizontal"
+                android:onClick="click"
                 android:text="学生"
                 android:textColor="@color/app_text_black"
                 android:textSize="@dimen/app_textsize_big" />
 
             <TextView
+                android:id="@+id/SelectCharacter_else_TV"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:clickable="true"
                 android:drawablePadding="8dp"
                 android:drawableTop="@drawable/ic_menu_camera"
                 android:gravity="center_horizontal"
+                android:onClick="click"
                 android:text="其他"
                 android:textColor="@color/app_text_black"
                 android:textSize="@dimen/app_textsize_big" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/SelectCharacter_character"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/app_green"
+                android:textSize="@dimen/app_textsize_big" />
+
+            <TextView
+                android:id="@+id/SelectCharacter_groups"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/app_green"
+                android:textSize="@dimen/app_textsize_normal" />
+        </LinearLayout>
     </LinearLayout>
+
 
     <TextView
         android:id="@+id/SelectCharacter_submit_TV"

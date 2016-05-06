@@ -36,6 +36,7 @@ public class MessageActivity extends BaseActivity{
     public void click(View view){
         switch (view.getId()){
             case R.id.Message_chat_RL:
+
                 startActivity(new Intent(activity,MessageChatActivity.class));
                 break;
 

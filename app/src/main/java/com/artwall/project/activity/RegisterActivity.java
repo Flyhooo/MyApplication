@@ -134,6 +134,7 @@ public class RegisterActivity extends BaseActivity {
             intent.putExtra("nickname", nickname);
             intent.putExtra("username", username);
             intent.putExtra("password", password);
+            intent.putExtra("isFromRegister", true);
             //下一步选择用户角色
             startActivity(intent);
         }

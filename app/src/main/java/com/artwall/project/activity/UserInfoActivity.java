@@ -28,8 +28,6 @@ import com.loopj.android.http.RequestParams;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import me.nereo.multi_image_selector.MultiImageSelectorActivity;
-
 /**
  * Created by 95 on 2016/4/7.
  */
@@ -51,8 +49,9 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
 
     private ImageView image;
 
-    private final int REQUEST_CODE = 0x0000;
+    private final int REQUEST_CODE = 0;
     private final int REQUEST_IMAGE = 1;
+    private final int REQUEST_CHARACTER = 2;
 
     @Override
     protected void initGui() {
@@ -70,10 +69,10 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void initData() {
-        updateInfo();
+        updateData();
     }
 
-    private void updateInfo() {
+    private void updateData() {
         if (App.userInfo != null) {
             nicknameTV.setText(App.userInfo.getNickname());
             sexTV.setText(App.userInfo.getSex());
@@ -117,8 +116,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
             case R.id.Userinfo_character_RL:
                 Intent intent2 = new Intent(activity, SelectCharacterActivity.class);
                 //是否是修改用户角色  还有一种是注册时跳转到用户角色的选择
-                intent2.putExtra("isUpdate", true);
-                startActivity(intent2);
+                startActivityForResult(intent2, REQUEST_CHARACTER);
                 break;
             case R.id.Userinfo_phone_RL:
 
@@ -131,20 +129,6 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
 
     }
 
-    private void getImage() {
-        Intent intent = new Intent(activity,
-                MultiImageSelectorActivity.class);
-        // 是否允许拍照
-        intent.putExtra(MultiImageSelectorActivity.EXTRA_SHOW_CAMERA,
-                true);
-        // 图片选择上限
-        intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_COUNT, 1);
-        // 图片选择模式：单选/多选
-        intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_MODE,
-                MultiImageSelectorActivity.MODE_SINGLE);
-        //
-        startActivityForResult(intent, REQUEST_IMAGE);
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -158,7 +142,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
             }
         } else if (requestCode == REQUEST_CODE && resultCode == 1) {
             //修改昵称
-            nicknameTV = (TextView) this.findViewById(R.id.userInfo_nickname);
+            nicknameTV.setText(App.userInfo.getNickname());
         } else if (requestCode == REQUEST_IMAGE && data != null) {
             String file = null;
             Bitmap bm = null;
@@ -166,16 +150,16 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
                 case 8:
                     if (data != null) {
                         file = data.getStringExtra("file");
+                        bm = ImageUtil.convertToBitmap(file, 200, 200);
                     }
-                    bm = ImageUtil.convertToBitmap(file, 200, 200);
                     break;
 
                 case 9:
                     if (data != null) {
                         file = data.getStringExtra("file");
                         LogUtil.logE("file---" + file);
+                        bm = ImageUtil.convertToBitmap(file, 200, 200);
                     }
-                    bm = ImageUtil.convertToBitmap(file, 200, 200);
                     break;
             }
             String image = ImageUtil.convertIconToString(bm);
@@ -183,7 +167,8 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
             params.put("images", image);
             post(API.IMAGE_UPLOAD, params);
 
-
+        } else if (requestCode == REQUEST_CHARACTER) {
+            characterTV.setText(App.userInfo.getCharacte());
         }
     }
 
@@ -215,7 +200,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         female.setOnClickListener(this);
         secert.setOnClickListener(this);
         cancle.setOnClickListener(this);
-        popWin.showAtLocation(toolbar, Gravity.BOTTOM, 1000, 1000);
+        popWin.showAtLocation(toolbar, Gravity.BOTTOM, 0, 0);
     }
 
     /**
@@ -234,15 +219,18 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.popup_selectSex_male_TV:
-                updateSex("男");
+                App.userInfo.setSex("男");
+                updateUserInfo();
                 popWin.dismiss();
                 break;
             case R.id.popup_selectSex_female_TV:
-                updateSex("女");
+                App.userInfo.setSex("女");
+                updateUserInfo();
                 popWin.dismiss();
                 break;
             case R.id.popup_selectSex_secert_TV:
-                updateSex("保密");
+                App.userInfo.setSex("保密");
+                updateUserInfo();
                 popWin.dismiss();
                 break;
             case R.id.popup_selectSex_cancle_TV:
@@ -251,7 +239,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         }
     }
 
-    private void updateSex(String sex) {
+    private void updateUserInfo() {
         RequestParams params = new RequestParams();
         params.put("username", App.userInfo.getUsername());
         params.put("nickname", App.userInfo.getNickname());
@@ -259,27 +247,42 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         params.put("introduce", App.userInfo.getIntroduce());
         params.put("characte", App.userInfo.getCharacte());
         params.put("groups", App.userInfo.getGroups());
-        params.put("sex", sex);
+        params.put("sex", App.userInfo.getSex());
         params.put("phone", App.userInfo.getPhone());
         params.put("email", App.userInfo.getEmail());
         post(API.Update_Info, params);
     }
 
+
     @Override
     public void onDataOK(String url, String responseString) {
         super.onDataOK(url, responseString);
-        try {
-            JSONObject obj = new JSONObject(responseString);
-            JSONObject data = obj.getJSONObject("data");
-            Gson gson = new Gson();
-            User user = gson.fromJson(data.toString(), User.class);
-            new UserInfoService(this).saveObject(user);
-            App.isLogin = true;
-            App.userInfo = user;
-        } catch (JSONException e) {
-            e.printStackTrace();
+
+        if (url.equals(API.IMAGE_UPLOAD)) {
+            try {
+                JSONObject obj = new JSONObject(responseString);
+                String images = obj.getJSONObject("data").getString("images");
+                App.userInfo.setPortrait(images);
+                updateUserInfo();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
         }
-        //修改完成之后更新本地性别
-        sexTV.setText(App.userInfo.getSex());
+        if (url.equals(API.Update_Info)) {
+            try {
+                JSONObject obj = new JSONObject(responseString);
+                JSONObject data = obj.getJSONObject("data");
+                Gson gson = new Gson();
+                User user = gson.fromJson(data.toString(), User.class);
+                new UserInfoService(this).saveObject(user);
+                App.isLogin = true;
+                App.userInfo = user;
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            //修改完成之后更新显示
+            updateData();
+        }
     }
 }

@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.artwall.project.HXService.Constants;
 import com.artwall.project.R;
 import com.artwall.project.adapter.MessageChatAdapter;
 import com.artwall.project.api.IMG;
@@ -58,7 +59,10 @@ public class MessageChatActivity extends BaseActivity {
         adapter.setOnItemClickListener(new MessageChatAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                startActivity(new Intent(activity, ChatActivity.class));
+                Intent intent=new Intent(activity, WeChatActivity.class);
+                intent.putExtra(Constants.User_ID,"18556526064");
+                intent.putExtra(Constants.TYPE,WeChatActivity.CHATTYPE_SINGLE);
+                startActivity(intent);
             }
         });
 

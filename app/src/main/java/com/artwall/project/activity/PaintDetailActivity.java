@@ -1,17 +1,23 @@
 package com.artwall.project.activity;
 
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.artwall.project.R;
 import com.artwall.project.adapter.TeachDetailAdapter;
-import com.artwall.project.api.IMG;
+import com.artwall.project.api.API;
 import com.artwall.project.base.BaseActivity;
-import com.artwall.project.bean.TeachDetail;
+import com.artwall.project.bean.PaintDetail;
+import com.artwall.project.bean.PaintDetailContent;
 import com.artwall.project.util.ImageLoaderUtil;
 import com.artwall.project.widget.NScroll.NoScrollListView;
+import com.google.gson.Gson;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -22,7 +28,7 @@ public class PaintDetailActivity extends BaseActivity {
 
     private NoScrollListView nsListView;
     private TeachDetailAdapter adapter;
-    private ArrayList<TeachDetail> list = new ArrayList<TeachDetail>();
+    private ArrayList<PaintDetailContent> list = new ArrayList<PaintDetailContent>();
     /**
      * 头部布局
      */
@@ -31,15 +37,17 @@ public class PaintDetailActivity extends BaseActivity {
      * 头部布局中的用户头像以及成品图片
      */
     private ImageView headUserImg, headImg;
+    private TextView headNickname, headInputtime, headIntroduce, headMaterial;
+
+    private TextView tips;
 
     @Override
     protected int getContentLayout() {
-        return R.layout.activity_pandw_detail;
+        return R.layout.activity_paint_detail;
     }
 
     @Override
     protected void initGui() {
-        toolbar = (Toolbar) this.findViewById(R.id.common_toolbar);
         nsListView = (NoScrollListView) this
                 .findViewById(R.id.teachDetail_noscrollListview);
         headview = LayoutInflater.from(activity).inflate(
@@ -48,54 +56,27 @@ public class PaintDetailActivity extends BaseActivity {
                 .findViewById(R.id.teachDetail_headview_userImg);
         headImg = (ImageView) headview
                 .findViewById(R.id.teachDetail_headview_img);
-        toolbar.setTitle("详情");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        headNickname = (TextView) headview.findViewById(R.id.teachDetail_headview_nickname);
+        headInputtime = (TextView) headview.findViewById(R.id.teachDetail_headview_inputtime);
+        headIntroduce = (TextView) headview.findViewById(R.id.teachDetail_headview_introduce);
+        headMaterial = (TextView) headview.findViewById(R.id.teachDetail_headview_meterial_TV);
+
+        tips = (TextView) this.findViewById(R.id.teachDetail_tips);
 
     }
 
 
     @Override
     protected void initData() {
-        for (int i = 0; i < 5; i++) {
-            TeachDetail teachDetail = new TeachDetail();
-            switch (i) {
-                case 0:
-                    teachDetail.setText("第一步：先画眼睛，注意事项已在图中标注出来了！");
-                    teachDetail
-                            .setImage("http://7xpo0z.com2.z0.glb.qiniucdn.com/1.jpg");
-                    break;
-                case 1:
-                    teachDetail
-                            .setText("第二步：眼睛的大致框架出来后就是眼神的描绘了，眼神的描绘主要体现在色彩的搭配上面！");
-                    teachDetail
-                            .setImage("http://7xpo0z.com2.z0.glb.qiniucdn.com/2.jpg");
-                    break;
-                case 2:
-                    teachDetail.setText("第三步：然后就是手的画法，手部主要注意关节部位！");
-                    teachDetail
-                            .setImage("http://7xpo0z.com2.z0.glb.qiniucdn.com/3.jpg");
-                    break;
-                case 3:
-                    teachDetail
-                            .setText("第四步：不同形态下的手部绘画要注意不同的点，例如本画中手部就有两种形态，关节部位很重要！");
-                    teachDetail
-                            .setImage("http://7xpo0z.com2.z0.glb.qiniucdn.com/4.jpg");
-                    break;
-                case 4:
-                    teachDetail.setText("第五步：脚步就相对较为简单一点，注意好整体的形态就差不多！图中有注释！");
-                    teachDetail
-                            .setImage("http://7xpo0z.com2.z0.glb.qiniucdn.com/5.jpg");
-                    break;
-            }
-            list.add(teachDetail);
+        String id = getIntent().getStringExtra("ID");
+        if (null == id) {
+            finish();
         }
 
-        ImageLoaderUtil.loadImg(headUserImg, IMG.IMG1);
-        ImageLoaderUtil.loadImg( headImg, "http://7xpo0z.com2.z0.glb.qiniucdn.com/result.jpg");
         adapter = new TeachDetailAdapter(activity, list);
         nsListView.setAdapter(adapter);
         nsListView.addHeaderView(headview);
+        getData(id);
     }
 
     public void click(View view) {
@@ -129,15 +110,42 @@ public class PaintDetailActivity extends BaseActivity {
         }
     }
 
-//    private void popMenu() {
-//        View view = LayoutInflater.from(activity).inflate(
-//                R.layout.popup_teachdetail_menu_share, null);
-//        final PopupWindow pop = new PopupWindow(view,
-//                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
-//        pop.setBackgroundDrawable(new BitmapDrawable());
-//        pop.setOutsideTouchable(true);
-//
-//        pop.showAsDropDown(toolbar);
-//    }
+    private void getData(String id) {
+        RequestParams params = new RequestParams();
+        params.put("id", id);
+        post(API.Paint_Content, params);
+
+    }
+
+    @Override
+    public void onDataOK(String url, String responseString) {
+        super.onDataOK(url, responseString);
+        try {
+            JSONObject obj = new JSONObject(responseString);
+            JSONObject data = obj.getJSONObject("data");
+            Gson gson = new Gson();
+            PaintDetail paintDetail = gson.fromJson(data.toString(), PaintDetail.class);
+            initUI(paintDetail);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void initUI(PaintDetail paintDetail) {
+        list.addAll(paintDetail.getContent());
+        adapter.notifyDataSetChanged();
+        initToolBar(paintDetail.getTitle().length() > 12 ? paintDetail.getTitle().substring(0, 12) + "..." : paintDetail.getTitle());
+
+        ImageLoaderUtil.loadImg(headUserImg, paintDetail.getPortrait());
+        ImageLoaderUtil.loadImg(headImg, paintDetail.getThumb());
+        headNickname.setText(paintDetail.getNickname());
+        headInputtime.setText(paintDetail.getInputtime());
+        headIntroduce.setText(paintDetail.getIntroduce());
+        headMaterial.setText(paintDetail.getMaterial().replaceAll(",", "  "));
+
+        tips.setText("小贴士: " + paintDetail.getTips());
+
+    }
 
 }

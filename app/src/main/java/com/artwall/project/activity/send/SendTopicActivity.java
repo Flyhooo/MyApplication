@@ -1,16 +1,18 @@
 package com.artwall.project.activity.send;
 
 import android.content.Intent;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 
 import com.artwall.project.R;
 import com.artwall.project.adapter.ImageAdapter;
 import com.artwall.project.api.API;
+import com.artwall.project.application.App;
 import com.artwall.project.base.BaseActivity;
 import com.artwall.project.bean.TopicType;
 import com.artwall.project.service.RuntimeInfoService;
+import com.artwall.project.service.SendTopicService;
 import com.artwall.project.util.LogUtil;
 import com.artwall.project.util.ToastUtils;
 import com.artwall.project.widget.NScroll.NoScrollGridView;
@@ -44,12 +46,15 @@ public class SendTopicActivity extends BaseActivity {
      */
     private static final int REQUEST_IMAGE = 2;
 
+    private EditText titleET;
+    private EditText introduceET;
+
     @Override
     protected void initGui() {
-        toolbar = (Toolbar) this.findViewById(R.id.common_toolbar);
-        toolbar.setTitle("发布话题");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        initToolBar("发布话题");
+
+        titleET = (EditText) this.findViewById(R.id.SendTopic_title);
+        introduceET = (EditText) this.findViewById(R.id.SendTopic_introduce);
 
         imageGrid = (NoScrollGridView) this.findViewById(R.id.SendTopic_nsGridview);
         imageList.add("");
@@ -63,7 +68,6 @@ public class SendTopicActivity extends BaseActivity {
     protected void initData() {
         //获取话题分类列表
         post(API.Topic_Type, new RequestParams());
-
 
         imageGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -79,9 +83,7 @@ public class SendTopicActivity extends BaseActivity {
                 // 图片选择模式：单选/多选
                 intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_MODE,
                         MultiImageSelectorActivity.MODE_MULTI);
-                //
-                if (imageList != null && imageList.size() > 1) {
-                    imageList.remove(imageList.size() - 1);
+                if (imageList != null && !"".equals(imageList.get(0))) {
                     intent.putExtra(
                             MultiImageSelectorActivity.EXTRA_DEFAULT_SELECTED_LIST,
                             imageList);
@@ -112,6 +114,8 @@ public class SendTopicActivity extends BaseActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        } else if (url.equals(API.Topic_Send)) {
+            ToastUtils.toastShaort(activity, "success");
         }
     }
 
@@ -125,15 +129,74 @@ public class SendTopicActivity extends BaseActivity {
                 data1 = data
                         .getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
                 LogUtil.logE(imageList.size() + "");
-                for (int i = 0; i < imageList.size(); i++) {
-                    LogUtil.logE(imageList.get(i));
-                }
                 // 刷新UI--已选择图片
                 imageList.removeAll(imageList);
-                imageList.addAll(data1);
-                imageList.add("");
+                if (data1.size() == 0) {
+                    imageList.add("");
+                } else {
+                    imageList.addAll(data1);
+                }
                 adapter.notifyDataSetChanged();
             }
         }
     }
+
+    public void click(View view) {
+        switch (view.getId()) {
+            case R.id.SendTopic_send:
+                String title = titleET.getText().toString();
+                String introduce = introduceET.getText().toString();
+                if (title.equals("")) {
+                    ToastUtils.toastShaort(activity, "标题不能为空！");
+                    break;
+                }
+                if (introduce.equals("")) {
+                    ToastUtils.toastShaort(activity, "描述不能为空！");
+                    break;
+                }
+                if (imageList != null && !imageList.get(0).equals("")) {
+                    sendWithImg(title, introduce, imageList);
+                } else {
+                    sendWithOutImg(title, introduce);
+                }
+                break;
+        }
+    }
+
+    /**
+     * 不带图片发送
+     *
+     * @param title
+     * @param introduce
+     */
+    private void sendWithOutImg(String title, String introduce) {
+        RequestParams params = new RequestParams();
+        params.put("userid", App.userInfo.getUserid());
+        params.put("tag", "");
+        params.put("fication", "");
+        params.put("title", title);
+        params.put("content", introduce);
+        params.put("images", "");
+        params.put("location", "合肥市蜀山区");
+        post(API.Topic_Send, params);
+
+    }
+
+    /**
+     * 带图片发送
+     *
+     * @param title
+     * @param introduce
+     * @param imageList
+     */
+    private void sendWithImg(String title, String introduce, ArrayList<String> imageList) {
+        Intent intent = new Intent(activity, SendTopicService.class);
+        intent.putStringArrayListExtra("imageList", imageList);
+        intent.putExtra("title", title);
+        intent.putExtra("introduce", introduce);
+        startService(intent);
+        finish();
+    }
+
+
 }

@@ -60,6 +60,12 @@ public class TopicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                     ((ItemViewHolder) holder).tagLL.setVisibility(View.VISIBLE);
                     String[] arr = topic.getTag().split(",");
                     switch (arr.length) {
+                        case 0:
+                            ((ItemViewHolder) holder).tag1.setVisibility(View.GONE);
+                            ((ItemViewHolder) holder).tag2.setVisibility(View.GONE);
+                            ((ItemViewHolder) holder).tag3.setVisibility(View.GONE);
+                            ((ItemViewHolder) holder).tag4.setVisibility(View.GONE);
+                            break;
                         case 1:
                             ((ItemViewHolder) holder).tag1.setVisibility(View.VISIBLE);
                             ((ItemViewHolder) holder).tag2.setVisibility(View.GONE);

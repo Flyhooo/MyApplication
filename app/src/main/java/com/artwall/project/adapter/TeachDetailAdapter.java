@@ -9,16 +9,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.artwall.project.R;
-import com.artwall.project.bean.TeachDetail;
+import com.artwall.project.bean.PaintDetailContent;
 import com.artwall.project.util.ImageLoaderUtil;
 
 import java.util.ArrayList;
 
 public class TeachDetailAdapter extends BaseAdapter {
-	private ArrayList<TeachDetail> list = null;
+	private ArrayList<PaintDetailContent> list = null;
 	private Context context;
 
-	public TeachDetailAdapter(Context context, ArrayList<TeachDetail> list) {
+	public TeachDetailAdapter(Context context, ArrayList<PaintDetailContent> list) {
 		this.context = context;
 		this.list = list;
 	}
@@ -58,8 +58,8 @@ public class TeachDetailAdapter extends BaseAdapter {
 			holder = (Holder) row.getTag();
 		}
 
-		holder.text.setText(list.get(arg0).getText().toString());
-		ImageLoaderUtil.loadImg(holder.image,list.get(arg0).getImage());
+		holder.text.setText(list.get(arg0).getContent().toString());
+		ImageLoaderUtil.loadImg(holder.image,list.get(arg0).getImages());
 
 		return row;
 	}
